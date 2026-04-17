@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Off-plan properties in Dubai | Exclusive investment opportunities with expert guidance from Masoud (@mrlivingcapital). Lower entry prices, flexible payments, high ROI.">
-    <meta name="keywords" content="off plan properties Dubai, Dubai off plan 2026, off plan investment Dubai, luxury real estate Dubai, Masoud Living Capital">
+    <meta name="description" content="Off-plan properties in Dubai | Exclusive investment opportunities with expert guidance from Masoud (@mrlivingcapital).">
     <title>Off-Plan Properties Dubai • Masoud (@mrlivingcapital)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&display=swap');
-        body { font-family: 'Inter', system-ui, sans-serif; }
-        .heading-font { font-family: 'Playfair Display', sans-serif; }
-        .hero-bg {
-            background: linear-gradient(rgba(15, 28, 26, 0.85), rgba(15, 28, 26, 0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
         }
-        .marble-accent {
-            background: linear-gradient(135deg, #0F1C1A 0%, #1A2F2A 100%);
+        .heading-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+        .hero-bg {
+            background-image: url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
@@ -27,29 +38,28 @@
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-9 h-9 bg-[#C9A66B] text-[#0F1C1A] flex items-center justify-center text-xl font-bold rounded-full">ML</div>
-                <div>
-                    <span class="text-2xl font-semibold tracking-tight heading-font">Mr Living Capital</span>
-                </div>
+                <span class="text-2xl font-semibold tracking-tight heading-font">Mr Living Capital</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#projects" class="hover:text-[#C9A66B] transition-colors">Curated Projects</a>
                 <a href="#why" class="hover:text-[#C9A66B] transition-colors">Why Off-Plan</a>
-                <a href="#approach" class="hover:text-[#C9A66B] transition-colors">My Approach</a>
+                <a href="#form" class="hover:text-[#C9A66B] transition-colors">Get Shortlist</a>
             </div>
-            <a href="https://www.instagram.com/mrlivingcapital/" target="_blank" class="flex items-center gap-2 text-[#C9A66B] hover:text-white transition-colors">
+            <a href="https://www.instagram.com/mrlivingcapital/" target="_blank" class="flex items-center gap-2 text-[#C9A66B] hover:text-white">
                 <i class="fa-brands fa-instagram text-2xl"></i>
-                <span class="text-sm font-medium">@mrlivingcapital</span>
+                <span class="text-sm">@mrlivingcapital</span>
             </a>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="hero-bg min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+    <!-- HERO - Fixed background -->
+    <header class="hero-bg min-h-screen flex items-center pt-20 relative">
+        <!-- Dark overlay for elegance -->
+        <div class="absolute inset-0 bg-[#0F1C1A]/85"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-24 relative z-10 grid md:grid-cols-2 gap-16 items-center">
             <div>
                 <div class="inline-flex items-center gap-2 bg-[#C9A66B]/10 text-[#C9A66B] text-sm font-medium px-4 py-2 rounded-full mb-6">
-                    <i class="fa-solid fa-circle-check"></i>
-                    Curated • Exclusive • Off-Plan
+                    <i class="fa-solid fa-circle-check"></i> Curated • Exclusive • Off-Plan
                 </div>
                 <h1 class="text-6xl md:text-7xl font-semibold leading-none tracking-tighter heading-font mb-6">
                     Off-plan properties in Dubai.<br>
@@ -58,94 +68,31 @@
                 <p class="text-xl text-[#C9D8D5] max-w-lg mb-10">
                     I don’t present every project. Only the ones I would invest in myself. Lower entry prices, flexible payment plans, and real ROI potential.
                 </p>
-                <a href="#form" class="inline-flex items-center gap-3 bg-[#C9A66B] hover:bg-[#E0C08A] text-[#0F1C1A] font-semibold px-10 py-5 rounded-2xl text-lg transition-all">
+                <a href="#form" 
+                   class="inline-flex items-center gap-3 bg-[#C9A66B] hover:bg-[#E0C08A] text-[#0F1C1A] font-semibold px-10 py-5 rounded-2xl text-lg transition-all">
                     Get My Curated Shortlist
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <div class="mt-8 flex items-center gap-8 text-sm">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#C9A66B]"></i> 2026–2028 handovers</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#C9A66B]"></i> 1–5% monthly plans</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-[#C9A66B]"></i> Trusted developers only</div>
-                </div>
-            </div>
-            <div class="hidden md:block">
-                <div class="bg-white/5 backdrop-blur-xl border border-[#C9A66B]/10 rounded-3xl p-8 shadow-2xl">
-                    <img src="https://picsum.photos/id/1015/800/900" alt="Dubai off-plan luxury" class="rounded-2xl shadow-2xl w-full">
-                </div>
             </div>
         </div>
     </header>
 
     <!-- WHY OFF-PLAN -->
-    <section id="why" class="marble-accent py-24">
+    <section id="why" class="py-24 bg-[#1A2F2A]">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-semibold heading-font text-center mb-16">Why Off-Plan in Dubai Right Now</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white/5 p-8 rounded-3xl border border-[#C9A66B]/10">
                     <h3 class="text-[#C9A66B] text-xl mb-4">Lower Entry Price</h3>
-                    <p class="text-[#C9D8D5]">Buy at today’s prices before completion. Significant discount vs ready properties.</p>
+                    <p class="text-[#C9D8D5]">Buy at today’s prices before completion.</p>
                 </div>
                 <div class="bg-white/5 p-8 rounded-3xl border border-[#C9A66B]/10">
                     <h3 class="text-[#C9A66B] text-xl mb-4">Flexible Payment Plans</h3>
-                    <p class="text-[#C9D8D5]">As low as 1% per month. Spread investment over 3–5 years.</p>
+                    <p class="text-[#C9D8D5]">As low as 1% per month over 3–5 years.</p>
                 </div>
                 <div class="bg-white/5 p-8 rounded-3xl border border-[#C9A66B]/10">
                     <h3 class="text-[#C9A66B] text-xl mb-4">Higher Potential ROI</h3>
-                    <p class="text-[#C9D8D5]">Capital appreciation + rental income from day one of handover.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CURATED PROJECTS -->
-    <section id="projects" class="py-24 bg-[#0F1C1A]">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold heading-font text-center mb-6">Curated Off-Plan Projects I Recommend</h2>
-            <p class="text-center text-[#C9D8D5] mb-16 max-w-2xl mx-auto">Only projects I have personally reviewed and would consider for my own portfolio.</p>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white/5 rounded-3xl overflow-hidden border border-[#C9A66B]/10">
-                    <img src="https://picsum.photos/id/1015/800/500" alt="WOW Tower" class="w-full h-64 object-cover">
-                    <div class="p-8">
-                        <h3 class="font-semibold text-2xl mb-2">WOW Tower by Mr. Eight</h3>
-                        <p class="text-[#C9D8D5] text-sm mb-6">Dubai • Luxury living with attitude • Q2 2027 handover</p>
-                        <a href="#form" class="text-[#C9A66B] hover:underline flex items-center gap-2">Express interest <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="bg-white/5 rounded-3xl overflow-hidden border border-[#C9A66B]/10">
-                    <img src="https://picsum.photos/id/1005/800/500" alt="Laya Courtyard" class="w-full h-64 object-cover">
-                    <div class="p-8">
-                        <h3 class="font-semibold text-2xl mb-2">Laya Courtyard • Studio City</h3>
-                        <p class="text-[#C9D8D5] text-sm mb-6">Modern studios &amp; 1BR • Strong rental demand</p>
-                        <a href="#form" class="text-[#C9A66B] hover:underline flex items-center gap-2">Express interest <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="bg-white/5 rounded-3xl overflow-hidden border border-[#C9A66B]/10">
-                    <img src="https://picsum.photos/id/133/800/500" alt="Waterfront Living" class="w-full h-64 object-cover">
-                    <div class="p-8">
-                        <h3 class="font-semibold text-2xl mb-2">Premium Waterfront Residences</h3>
-                        <p class="text-[#C9D8D5] text-sm mb-6">Prime location • Views &amp; lifestyle</p>
-                        <a href="#form" class="text-[#C9A66B] hover:underline flex items-center gap-2">Express interest <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MY APPROACH -->
-    <section id="approach" class="marble-accent py-24">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-semibold heading-font mb-8">My Approach</h2>
-            <p class="text-2xl text-[#C9D8D5] leading-relaxed">
-                I do not present every project that lands on my desk.<br>
-                Only the ones that meet my strict criteria: location, developer track record, realistic ROI, and genuine lifestyle value.
-            </p>
-            <div class="mt-16 flex justify-center">
-                <div class="text-left max-w-md">
-                    <p class="italic">"Market does not care about your targets. It tells you what it wants. The smart move is to listen."</p>
-                    <p class="text-[#C9A66B] mt-6">— Masoud (@mrlivingcapital)</p>
+                    <p class="text-[#C9D8D5]">Capital appreciation + future rental income.</p>
                 </div>
             </div>
         </div>
@@ -155,58 +102,12 @@
     <section id="form" class="py-24 bg-[#0F1C1A]">
         <div class="max-w-2xl mx-auto px-6">
             <div class="bg-white/5 backdrop-blur-2xl border border-[#C9A66B]/20 rounded-3xl p-10">
-                <h2 class="text-4xl font-semibold heading-font text-center mb-3">Ready for exclusive opportunities?</h2>
-                <p class="text-center text-[#C9D8D5] mb-10">Fill the form below and I’ll send you my latest curated shortlist + market insights within 24 hours.</p>
+                <h2 class="text-4xl font-semibold heading-font text-center mb-3">Get My Curated Shortlist</h2>
+                <p class="text-center text-[#C9D8D5] mb-10">I’ll send you the latest handpicked off-plan opportunities within 24 hours.</p>
                 
-                <form action="https://formspree.io/f/YOUR_CODE_HERE" method="POST" class="space-y-8">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm mb-2 font-medium">Full Name</label>
-                            <input type="text" name="name" required class="w-full bg-white/10 border border-[#C9A66B]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#C9A66B]">
-                        </div>
-                        <div>
-                            <label class="block text-sm mb-2 font-medium">Phone (with WhatsApp)</label>
-                            <input type="tel" name="phone" required class="w-full bg-white/10 border border-[#C9A66B]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#C9A66B]">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm mb-2 font-medium">Email</label>
-                        <input type="email" name="email" required class="w-full bg-white/10 border border-[#C9A66B]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#C9A66B]">
-                    </div>
-                    <div>
-                        <label class="block text-sm mb-2 font-medium">What are you looking for?</label>
-                        <select name="interest" class="w-full bg-white/10 border border-[#C9A66B]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#C9A66B]">
-                            <option value="">Select type</option>
-                            <option value="Studio / 1BR">Studio or 1 Bedroom</option>
-                            <option value="2-3BR Apartment">2-3 Bedroom Apartment</option>
-                            <option value="Waterfront / Luxury">Waterfront or Ultra-Luxury</option>
-                            <option value="High ROI Investment">High ROI Investment Focus</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full bg-[#C9A66B] hover:bg-[#E0C08A] text-[#0F1C1A] font-semibold py-7 rounded-3xl text-lg transition-all flex items-center justify-center gap-3">
-                        SEND ME THE SHORTLIST
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                    <p class="text-xs text-center text-[#C9D8D5]/70">Your information is safe. I hate spam as much as you do.</p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-black/30 py-12 border-t border-[#C9A66B]/10">
-        <div class="max-w-7xl mx-auto px-6 text-center text-sm">
-            <p>© 2026 Mr Living Capital • Masoud • Dubai, UAE</p>
-            <p class="mt-2 text-[#C9A66B]">Follow me on Instagram <a href="https://www.instagram.com/mrlivingcapital/" class="underline">@mrlivingcapital</a></p>
-        </div>
-    </footer>
-
-    <script>
-        // Tailwind script already loaded
-        tailwind.config = {
-            content: ["./**/*.{html,js}"],
-            theme: { extend: {} }
-        }
-    </script>
-</body>
-</html>
+                <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="space-y-6">
+                    <input type="text" name="name" placeholder="Full Name" required 
+                           class="w-full bg-white/10 border border-[#C9A66B]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#C9A66B] text-white placeholder:text-[#C9D8D5]/70">
+                    
+                    <input type="email" name="email" placeholder="Email Address" required 
+                           class="w-full bg-white/10 border border-[#C9A66B]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#C9A66B] text-white placeholder:text
