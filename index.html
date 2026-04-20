@@ -36,11 +36,11 @@
                 <span class="text-2xl font-medium tracking-widest heading-font">LIVING CAPITAL</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#why" class="hover:text-[#B49B50]">Why Off-Plan</a>
-                <a href="#about" class="hover:text-[#B49B50]">About Masoud</a>
-                <a href="#projects" class="hover:text-[#B49B50]">Curated Projects</a>
-                <a href="#developers" class="hover:text-[#B49B50]">Top Developers</a>
-                <a href="#form" class="hover:text-[#B49B50]">Get Shortlist</a>
+                <a href="#about" class="hover:text-[#B49B50] transition-colors">About Masoud</a>
+                <a href="#why" class="hover:text-[#B49B50] transition-colors">Why Off-Plan</a>
+                <a href="#projects" class="hover:text-[#B49B50] transition-colors">Curated Projects</a>
+                <a href="#developers" class="hover:text-[#B49B50] transition-colors">Top Developers</a>
+                <a href="#form" class="hover:text-[#B49B50] transition-colors">Get Shortlist</a>
             </div>
             <a href="https://www.instagram.com/mrlivingcapital/" target="_blank" class="flex items-center gap-2 text-[#B49B50]">
                 <i class="fa-brands fa-instagram text-2xl"></i>
@@ -74,12 +74,14 @@
 
     <!-- ABOUT ME -->
     <section id="about" class="py-20 bg-[#F8F4ED]">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-medium heading-font text-center mb-8">Hi, I’m Masoud</h2>
-            <div class="max-w-3xl mx-auto text-center text-[#5F5F5F]">
-                <p class="text-lg">For the past 35 years I have lived, worked, and invested in Dubai’s real estate market. I’m not a broker — I’m an advisor. I only present projects I would personally buy for my own portfolio or recommend to my family.</p>
-                <p class="mt-6">No hype. No pressure. Just honest, experience-based guidance so you can make confident decisions in one of the world’s most dynamic property markets.</p>
-            </div>
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-medium heading-font mb-6">Hi, I’m Masoud</h2>
+            <p class="text-lg text-[#5F5F5F] max-w-2xl mx-auto">
+                For the past 35 years I have lived, worked, and invested in Dubai’s real estate market. I’m not a broker — I’m an advisor. I only present projects I would personally buy for my own portfolio or recommend to my family.
+            </p>
+            <p class="mt-6 text-lg text-[#5F5F5F] max-w-2xl mx-auto">
+                No hype. No pressure. Just honest, experience-based guidance so you can make confident decisions in one of the world’s most dynamic property markets.
+            </p>
         </div>
     </section>
 
@@ -111,7 +113,53 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <h2 class="text-4xl font-medium heading-font text-center mb-6 text-white">Curated Projects I Recommend</h2>
             <p class="text-center text-white mb-12 max-w-2xl mx-auto">Only the ones I have personally reviewed and would consider for my own portfolio.</p>
-            <!-- Add your 3 project cards here (Binghatti Skyflame, Sobha City, Emaar South Villas, etc.) -->
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-[#F8F4ED]/90 rounded-3xl overflow-hidden border border-[#B49B50]/20">
+                    <img src="https://picsum.photos/id/1015/800/500" alt="Binghatti Skyflame" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <h3 class="font-semibold text-2xl mb-1">Binghatti Skyflame</h3>
+                        <p class="text-[#B49B50] text-sm mb-6">Majan, Dubai • Q4 2027 Handover</p>
+                        <ul class="space-y-3 text-[#5F5F5F] text-sm">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Resort-style twin towers with premium amenities</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Studios, 1 & 2 Bedroom apartments</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Strong location and connectivity</li>
+                        </ul>
+                        <a href="#form" class="mt-8 text-[#B49B50] hover:underline flex items-center gap-2 text-sm font-medium">Express interest <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-[#F8F4ED]/90 rounded-3xl overflow-hidden border border-[#B49B50]/20">
+                    <img src="https://picsum.photos/id/160/800/500" alt="Sobha City" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <h3 class="font-semibold text-2xl mb-1">Sobha City</h3>
+                        <p class="text-[#B49B50] text-sm mb-6">Al Bahiya, Abu Dhabi • Q4 2029 Handover</p>
+                        <ul class="space-y-3 text-[#5F5F5F] text-sm">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Waterfront nature-led community</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Excellent connectivity to airport &amp; Yas Island</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Integrated schools, healthcare &amp; golf course</li>
+                        </ul>
+                        <a href="#form" class="mt-8 text-[#B49B50] hover:underline flex items-center gap-2 text-sm font-medium">Express interest <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-[#F8F4ED]/90 rounded-3xl overflow-hidden border border-[#B49B50]/20">
+                    <img src="https://picsum.photos/id/133/800/500" alt="Emaar South Villas" class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <h3 class="font-semibold text-2xl mb-1">Emaar South Villas</h3>
+                        <p class="text-[#B49B50] text-sm mb-6">Emaar South, Dubai • 2027–2028 Handover</p>
+                        <ul class="space-y-3 text-[#5F5F5F] text-sm">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Villas along championship golf course</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Close to Al Maktoum Airport &amp; future infrastructure</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#B49B50] mt-1"></i> Proven rental yields and capital growth</li>
+                        </ul>
+                        <a href="#form" class="mt-8 text-[#B49B50] hover:underline flex items-center gap-2 text-sm font-medium">Express interest <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -121,7 +169,6 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <h2 class="text-4xl font-medium heading-font text-center mb-8 text-white">Top Developers in the UAE 2026–2029</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-white">
-                <!-- Fact-based short list from current 2026 data -->
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl">
                     <h3 class="font-semibold">Emaar Properties</h3>
                     <p class="text-sm text-[#D4C9B0]">Creek Harbour, Dubai Hills Estate, Expo City — major handovers 2026–2029</p>
@@ -132,11 +179,11 @@
                 </div>
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl">
                     <h3 class="font-semibold">Sobha Realty</h3>
-                    <p class="text-sm text-[#D4C9B0]">Sobha City Abu Dhabi, Sobha Sanctuary, Hartland — premium quality builds</p>
+                    <p class="text-sm text-[#D4C9B0]">Sobha City Abu Dhabi, Sobha Sanctuary — premium quality builds</p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl">
                     <h3 class="font-semibold">DAMAC Properties</h3>
-                    <p class="text-sm text-[#D4C9B0]">DAMAC Lagoons, DAMAC Riverside, Sun City — large-scale luxury communities</p>
+                    <p class="text-sm text-[#D4C9B0]">DAMAC Lagoons, DAMAC Riverside — large-scale luxury communities</p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl">
                     <h3 class="font-semibold">Nakheel</h3>
@@ -144,7 +191,7 @@
                 </div>
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl">
                     <h3 class="font-semibold">Meraas</h3>
-                    <p class="text-sm text-[#D4C9B0]">Bluewaters, City Walk extensions, lifestyle-driven developments</p>
+                    <p class="text-sm text-[#D4C9B0]">Bluewaters, City Walk extensions — lifestyle-driven developments</p>
                 </div>
             </div>
         </div>
@@ -158,8 +205,88 @@
                 <h2 class="text-4xl font-medium heading-font text-center mb-3">Let’s Talk About What You’re Looking For</h2>
                 <p class="text-center text-[#5F5F5F] mb-10">Serious inquiries only — I reply personally within 24 hours.</p>
                 
-                <!-- Paste the full qualifier form here (the beautiful one with all fields) from our earlier versions -->
-                <!-- It includes name, phone, email, budget, property type, intent, financing, timeline -->
+                <form action="https://formspree.io/f/mqewqkvo" method="POST" class="space-y-8">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">Full Name</label>
+                            <input type="text" name="name" required class="w-full bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#B49B50]">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">Phone / WhatsApp</label>
+                            <input type="tel" name="phone" required class="w-full bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#B49B50]">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">Email Address</label>
+                        <input type="email" name="email" required class="w-full bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#B49B50]">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">Budget Range (AED)</label>
+                        <select name="budget" required class="w-full bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#B49B50]">
+                            <option value="">Select budget</option>
+                            <option value="Below 1M">Below 1 Million AED</option>
+                            <option value="1M to 3M">1M – 3M AED</option>
+                            <option value="3M to 5M">3M – 5M AED</option>
+                            <option value="5M to 10M">5M – 10M AED</option>
+                            <option value="10M and above">10M AED and above</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">Preferred Property Type</label>
+                        <select name="property_type" required class="w-full bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#B49B50]">
+                            <option value="">Select type</option>
+                            <option value="Studio">Studio</option>
+                            <option value="1 Bedroom">1 Bedroom</option>
+                            <option value="2 Bedroom">2 Bedroom</option>
+                            <option value="3 Bedroom+">3 Bedroom or larger</option>
+                            <option value="Villa">Villa / Townhouse</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">Your Main Intent</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="flex items-center gap-3 bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 cursor-pointer hover:border-[#B49B50]">
+                                <input type="radio" name="intent" value="Investor" class="accent-[#B49B50]" required>
+                                <span class="text-[#2C2C2C]">I am primarily an investor</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 cursor-pointer hover:border-[#B49B50]">
+                                <input type="radio" name="intent" value="End-user" class="accent-[#B49B50]" required>
+                                <span class="text-[#2C2C2C]">I want to move in (lifestyle)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">Cash buyer or looking for financing?</label>
+                        <select name="financing" required class="w-full bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#B49B50]">
+                            <option value="">Select option</option>
+                            <option value="Cash">Cash buyer</option>
+                            <option value="Financing">Looking for financing / mortgage</option>
+                            <option value="Not sure">Not sure yet</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm mb-2 font-medium text-[#5F5F5F]">How Soon Are You Planning to Move Forward?</label>
+                        <select name="timeline" required class="w-full bg-white border border-[#B49B50]/30 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#B49B50]">
+                            <option value="">Select timeline</option>
+                            <option value="2 to 4 weeks">2 to 4 weeks</option>
+                            <option value="1 to 2 months">1 to 2 months</option>
+                            <option value="3 to 6 months">3 to 6 months</option>
+                            <option value="Just looking">Just exploring options for now</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#B49B50] hover:bg-[#E0C08A] text-[#0F0C08] font-semibold py-7 rounded-3xl text-lg transition-all flex items-center justify-center gap-3">
+                        SEND MY DETAILS — I’LL REPLY PERSONALLY
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <p class="text-xs text-center text-[#5F5F5F]">All information stays private. Serious inquiries only.</p>
+                </form>
             </div>
         </div>
     </section>
@@ -178,7 +305,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('✅ Full rich landing page restored with warm neutral Dubai colors and calm elegant design');
+            console.log('✅ Full detailed landing page restored with warm neutral Dubai colors, calm elegant fonts, and beautiful UAE landmark backgrounds');
         });
     </script>
 </body>
