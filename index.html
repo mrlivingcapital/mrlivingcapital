@@ -3,28 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MR LIVING CAPITAL | Personal Real Estate Advisor</title>
+    
+    <title>MR LIVING CAPITAL | Investment & Capital Advisor</title>
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;600&display=swap" rel="stylesheet">
 
     <style>
-        /* LINE 20: DESIGN TOKENS 
+        /* SECTION: GLOBAL VARIABLES & UAE FLAG COLOR PALETTE
+        ------------------------------------------------------------
         */
         :root {
-            --red: #CE1126;
-            --black: #000000;
-            --white: #FFFFFF;
-            --gold: #E6AA20;
-            --dark-grey: #121212;
-            --glass-panel: rgba(10, 10, 10, 0.97);
-            --transition-speed: 1.3s;
-            --easing: cubic-bezier(0.4, 0, 0.2, 1);
+            /* UAE FLAG COLORS */
+            --uae-red: #CE1126;
+            --uae-green: #007A33;
+            --uae-white: #FFFFFF;
+            --uae-black: #000000;
+            
+            /* LUXURY & ACCENT COLORS */
+            --gold-accent: #E6AA20;
+            --grey-light: #F8F9FA;
+            --grey-border: #EEEEEE;
+            
+            /* TRANSITION & ANIMATION CURVES */
+            --transition-slow: opacity 2.5s ease-in-out;
+            --transition-standard: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            
+            /* GLASSMORPHISM EFFECTS */
+            --glass-bg: rgba(10, 10, 10, 0.98);
+            --glass-blur: blur(30px);
         }
 
-        /* LINE 35: GLOBAL RESET 
+        /* SECTION: GLOBAL RESET
+        ------------------------------------------------------------
         */
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -35,20 +56,36 @@
         }
 
         body {
-            background-color: var(--black);
-            color: var(--white);
+            background-color: var(--uae-black);
+            color: var(--uae-white);
             font-family: 'DM Sans', sans-serif;
             overflow-x: hidden;
-            line-height: 1.8;
-            scroll-behavior: smooth;
+            line-height: 1.85;
+            font-size: 16px;
         }
 
+        /* SECTION: RTL (RIGHT-TO-LEFT) LOGIC
+        ------------------------------------------------------------
+        */
         body.rtl {
             direction: rtl;
             font-family: 'Noto Sans Arabic', sans-serif;
         }
 
-        /* LINE 65: CINEMATIC BACKGROUND ENGINE 
+        body.rtl .hero-sub {
+            border-left: none;
+            border-right: 10px solid var(--uae-red);
+            padding-left: 0;
+            padding-right: 45px;
+        }
+
+        body.rtl .reasons-sidebar {
+            border-right: none;
+            border-left: 10px solid var(--gold-accent);
+        }
+
+        /* SECTION: CINEMATIC BACKGROUND ENGINE
+        ------------------------------------------------------------
         */
         .bg-container {
             position: fixed;
@@ -57,7 +94,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: #000;
+            background-color: var(--uae-black);
         }
 
         .bg-layer {
@@ -68,71 +105,85 @@
             height: 100%;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             opacity: 0;
-            transition: opacity 2.5s ease-in-out;
-            filter: brightness(0.4) contrast(1.15);
+            transition: var(--transition-slow);
+            filter: brightness(0.40) contrast(1.15);
+            transform: scale(1.05);
         }
 
         .bg-layer.active {
             opacity: 1;
             z-index: 1;
+            transform: scale(1);
         }
 
-        /* LINE 100: HEADER & NAVIGATION 
+        /* SECTION: NAVIGATION INTERFACE
+        ------------------------------------------------------------
         */
-        nav {
+        header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             height: 110px;
             z-index: 9999;
-            background: var(--white);
+            background-color: var(--uae-white);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 8%;
-            border-bottom: 7px solid var(--red);
+            border-bottom: 7px solid var(--uae-red);
             box-shadow: 0 15px 50px rgba(0,0,0,0.5);
         }
 
         .nav-logo {
             font-family: 'Playfair Display', serif;
-            color: var(--black);
-            font-size: 1.8rem;
+            color: var(--uae-black);
+            font-size: 1.85rem;
             font-weight: 700;
-            letter-spacing: -1.5px;
             text-transform: uppercase;
             text-decoration: none;
+            letter-spacing: -1.2px;
         }
 
         .lang-control {
             display: flex;
-            gap: 15px;
+            align-items: center;
+            gap: 12px;
         }
 
-        .lang-button {
-            background: transparent;
-            border: 1.5px solid #ddd;
-            padding: 14px 24px;
+        .lang-btn {
+            background-color: transparent;
+            border: 2.5px solid var(--grey-border);
+            padding: 12px 24px;
             cursor: pointer;
             font-weight: 700;
             font-size: 0.9rem;
-            transition: 0.4s;
-            color: var(--black);
+            color: var(--uae-black);
+            transition: var(--transition-standard);
             text-transform: uppercase;
         }
 
-        .lang-button.active {
-            background: var(--black);
-            color: var(--white);
-            border-color: var(--black);
+        .lang-btn:hover {
+            border-color: var(--uae-red);
         }
 
-        /* LINE 155: SECTION FRAMEWORK 
+        .lang-btn.active {
+            background-color: var(--uae-black);
+            color: var(--uae-white);
+            border-color: var(--uae-black);
+        }
+
+        /* SECTION: PAGE LAYOUT & TYPOGRAPHY
+        ------------------------------------------------------------
         */
         section {
             min-height: 100vh;
-            padding: 220px 10% 140px;
+            padding-top: 240px;
+            padding-bottom: 160px;
+            padding-left: 10%;
+            padding-right: 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -140,184 +191,268 @@
             z-index: 10;
         }
 
-        .hero-title {
+        h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3.8rem, 11vw, 7rem);
-            line-height: 1;
+            font-size: 5.2rem;
+            line-height: 1.05;
             margin-bottom: 50px;
             font-style: italic;
+            font-weight: 700;
         }
 
-        .hero-description {
+        .hero-sub {
             font-size: 1.7rem;
             max-width: 900px;
-            color: rgba(255, 255, 255, 0.98);
-            border-left: 10px solid var(--red);
-            padding-left: 40px;
-            margin-bottom: 60px;
+            border-left: 12px solid var(--uae-red);
+            padding-left: 45px;
+            margin-bottom: 75px;
             font-weight: 300;
+            color: rgba(255, 255, 255, 0.95);
         }
 
-        /* LINE 195: ABOUT ME COMPONENT 
+        /* SECTION: ABOUT ME COMPONENT (ROUND PHOTO)
+        ------------------------------------------------------------
         */
-        .about-grid-layout {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 120px;
+        .about-flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 100px;
             align-items: flex-start;
+            justify-content: space-between;
         }
 
-        .about-content-left h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 35px;
+        .about-biography {
+            flex: 1;
+            min-width: 450px;
         }
 
-        .about-content-left p {
-            font-size: 1.35rem;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 650px;
-        }
-
-        .reasons-sidebar {
-            background: var(--glass-panel);
-            padding: 65px;
-            border-right: 8px solid var(--gold);
-            backdrop-filter: blur(30px);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-        }
-
-        .reason-entry {
+        .biography-content {
             margin-bottom: 40px;
         }
 
-        .reason-entry strong {
+        .biography-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+        }
+
+        .biography-content p {
+            font-size: 1.35rem;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* THE PHOTO COMPONENT */
+        .portrait-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .round-photo-frame {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            border: 6px solid var(--gold-accent);
+            overflow: hidden;
+            background-color: #111;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+        }
+
+        .round-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SECTION: THE 5 REASONS SIDEBAR
+        ------------------------------------------------------------
+        */
+        .reasons-sidebar {
+            flex: 0 0 550px;
+            background-color: var(--glass-bg);
+            padding: 70px;
+            border-right: 12px solid var(--gold-accent);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
+        }
+
+        .reasons-sidebar h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--uae-white);
+            margin-bottom: 60px;
+            opacity: 0.7;
+        }
+
+        .reason-node {
+            margin-bottom: 45px;
+        }
+
+        .reason-node strong {
             display: block;
-            color: var(--gold);
+            color: var(--gold-accent);
             font-size: 1.4rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .reason-entry p {
+        .reason-node p {
             font-size: 1.15rem;
-            opacity: 0.8;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* LINE 255: PORTFOLIO GRID 
+        /* SECTION: STRATEGIC SELECTION (PORTFOLIO)
+        ------------------------------------------------------------
         */
-        .projects-grid {
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 90px;
+        }
+
+        .portfolio-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 60px;
-            margin-top: 80px;
         }
 
         .project-card {
-            background: var(--glass-panel);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 80px 60px;
-            border-top: 12px solid var(--red);
-            transition: var(--transition-speed) var(--easing);
+            background-color: var(--glass-bg);
+            padding: 90px 60px;
+            border-top: 15px solid var(--uae-red);
+            transition: var(--transition-standard);
+            position: relative;
         }
 
         .project-card:hover {
-            transform: translateY(-30px);
-            border-color: var(--gold);
-            background: rgba(18, 18, 18, 1);
+            transform: translateY(-25px);
+            border-top-color: var(--gold-accent);
         }
 
         .project-meta {
-            font-size: 0.9rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 6px;
+            font-size: 1rem;
             font-weight: 700;
+            color: var(--gold-accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
             margin-bottom: 35px;
             display: block;
         }
 
         .project-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 25px;
         }
 
-        /* LINE 305: LEAD GENERATION FORM 
+        .project-card p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* SECTION: FORMSPREE MASTER FORM
+        ------------------------------------------------------------
         */
-        .form-identity-box {
-            background: var(--white);
-            color: var(--black);
-            padding: 100px 12%;
-            max-width: 1300px;
+        .form-master-wrapper {
+            background-color: var(--uae-white);
+            color: var(--uae-black);
+            padding: 120px 10%;
+            max-width: 1400px;
             margin: 0 auto;
             border-radius: 4px;
-            box-shadow: 0 60px 120px rgba(0,0,0,0.7);
+            box-shadow: 0 80px 150px rgba(0,0,0,0.9);
         }
 
-        .form-layout-grid {
+        .form-heading {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .form-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .form-grid-architecture {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 45px;
+            gap: 50px;
         }
 
-        .field-full {
+        .full-span {
             grid-column: span 2;
         }
 
-        .form-field label {
-            font-size: 0.9rem;
+        .form-field-group {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .form-field-group label {
+            display: block;
             font-weight: 700;
             text-transform: uppercase;
-            color: #999;
-            display: block;
-            margin-bottom: 18px;
-            letter-spacing: 2.5px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #777777;
+            margin-bottom: 15px;
         }
 
-        .form-field input, 
-        .form-field select, 
-        .form-field textarea {
+        .form-field-group input,
+        .form-field-group select {
             width: 100%;
             padding: 26px;
-            background: #f9f9f9;
-            border: 1.5px solid #eee;
+            background-color: #FBFBFB;
+            border: 2px solid #F0F0F0;
             font-family: 'DM Sans', sans-serif;
             font-size: 1.2rem;
-            transition: 0.4s;
+            color: var(--uae-black);
+            transition: var(--transition-standard);
         }
 
-        .form-field input:focus {
-            border-color: var(--red);
-            background: #fff;
+        .form-field-group input:focus,
+        .form-field-group select:focus {
+            background-color: #FFFFFF;
+            border-color: var(--uae-red);
         }
 
-        .cta-submit-button {
+        .submit-button {
             width: 100%;
-            background: var(--black);
-            color: var(--white);
+            background-color: var(--uae-black);
+            color: var(--uae-white);
             padding: 40px;
             border: none;
             font-weight: 700;
+            font-size: 1.5rem;
             text-transform: uppercase;
-            cursor: pointer;
-            margin-top: 60px;
-            font-size: 1.3rem;
             letter-spacing: 5px;
-            transition: 0.6s;
+            cursor: pointer;
+            margin-top: 70px;
+            transition: var(--transition-standard);
         }
 
-        .cta-submit-button:hover {
-            background: var(--red);
-            letter-spacing: 10px;
+        .submit-button:hover {
+            background-color: var(--uae-red);
+            letter-spacing: 12px;
         }
 
-        /* LINE 380: STICKY SOCIAL INTERFACE 
+        /* SECTION: STICKY SOCIAL INTERFACE
+        ------------------------------------------------------------
         */
-        .sticky-social-nav {
+        .sticky-social-bar {
             position: fixed;
             bottom: 70px;
             right: 70px;
@@ -327,185 +462,345 @@
             gap: 30px;
         }
 
-        .sticky-btn {
+        .social-trigger {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            transition: var(--transition-bounce);
+            text-decoration: none;
         }
 
-        .sticky-btn svg {
+        .social-trigger svg {
             width: 38px;
-            fill: #fff;
+            fill: var(--uae-white);
         }
 
-        .brand-wa { background: #25D366; }
-        .brand-tg { background: #229ED9; }
-        .brand-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-
-        .sticky-btn:hover {
-            transform: scale(1.3) translateY(-15px);
+        .social-trigger:hover {
+            transform: scale(1.3) translateY(-15px) rotate(8deg);
         }
 
-        /* LINE 430: MOBILE ADAPTIVITY 
+        /* SOCIAL COLORS */
+        .bg-wa { background-color: #25D366; }
+        .bg-tg { background-color: #229ED9; }
+        .bg-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
+        /* SECTION: RESPONSIVE OVERRIDES (MOBILE & TABLET)
+        ------------------------------------------------------------
         */
-        @media (max-width: 1100px) {
-            .about-grid-layout { grid-template-columns: 1fr; }
-            .form-layout-grid { grid-template-columns: 1fr; }
-            .field-full { grid-column: span 1; }
-            .hero-title { font-size: 4rem; }
-            section { padding: 160px 8% 100px; }
-            .sticky-social-nav { right: 30px; bottom: 30px; }
+        @media (max-width: 1200px) {
+            h1 { font-size: 4rem; }
+            .about-flex-container { flex-direction: column; }
+            .about-biography, .reasons-sidebar { flex: 1 1 100%; min-width: 100%; }
+            .form-grid-architecture { grid-template-columns: 1fr; }
+            .full-span { grid-column: span 1; }
+            section { padding-top: 180px; padding-bottom: 120px; }
+            .sticky-social-bar { right: 30px; bottom: 30px; }
+            .social-trigger { width: 65px; height: 65px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .hero-sub { font-size: 1.25rem; padding-left: 25px; }
+            nav { height: 90px; }
+            .nav-logo { font-size: 1.4rem; }
+            .round-photo-frame { width: 260px; height: 260px; }
         }
     </style>
 </head>
-<body>
+<body class="ltr">
 
     <div class="bg-container">
-        <div class="bg-layer active" id="bg-hero" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2000');"></div>
-        <div class="bg-layer" id="bg-about" style="background-image: url('https://images.unsplash.com/photo-1582672093232-995639170c0c?q=80&w=2000');"></div>
-        <div class="bg-layer" id="bg-portfolio" style="background-image: url('https://images.unsplash.com/photo-1578133671510-dec64293994a?q=80&w=2000');"></div>
-        <div class="bg-layer" id="bg-advisory" style="background-image: url('https://images.unsplash.com/photo-1634714101031-f594e222956f?q=80&w=2000');"></div>
-        <div class="bg-layer" id="bg-contact" style="background-image: url('https://images.unsplash.com/photo-1528901166007-3784c7dd3653?q=80&w=2000');"></div>
+        <div class="bg-layer active" id="bg-section-hero" style="background-image: url('https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=2400');"></div>
+        
+        <div class="bg-layer" id="bg-section-about" style="background-image: url('https://images.unsplash.com/photo-1614101614278-f68285ba0f0c?q=80&w=2400');"></div>
+        
+        <div class="bg-layer" id="bg-section-projects" style="background-image: url('https://images.unsplash.com/photo-1549468057-5b7fa1a41d7a?q=80&w=2400');"></div>
+        
+        <div class="bg-layer" id="bg-section-advisory" style="background-image: url('https://images.unsplash.com/photo-1528702748617-c64d49f918af?q=80&w=2400');"></div>
+        
+        <div class="bg-layer" id="bg-section-contact" style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2400');"></div>
     </div>
 
-    <nav>
-        <a href="#" class="nav-logo">MR LIVING CAPITAL</a>
+    <header>
+        <a href="#section-hero" class="nav-logo">MR LIVING CAPITAL</a>
         <div class="lang-control">
-            <button class="lang-button active" onclick="setLocale('en', this)">EN</button>
-            <button class="lang-button" onclick="setLocale('ar', this)">AR</button>
-            <button class="lang-button" onclick="setLocale('fa', this)">FA</button>
+            <button class="lang-btn active" id="btn-en" onclick="changeLanguage('en', this)">EN</button>
+            <button class="lang-btn" id="btn-ar" onclick="changeLanguage('ar', this)">AR</button>
+            <button class="lang-btn" id="btn-fa" onclick="changeLanguage('fa', this)">FA</button>
         </div>
-    </nav>
+    </header>
 
-    <section id="hero">
-        <h1 class="hero-title" id="L_H1">Invest with <span style="color:var(--red);">Authority</span>.<br>Exit with <span style="color:var(--gold);">Wealth</span>.</h1>
-        <p class="hero-description" id="L_HS">I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term wealth.</p>
-        <a href="#contact" class="cta-submit-button" style="text-decoration:none; width:fit-content; padding:25px 80px;">Book a Consultation</a>
-    </section>
-
-    <section id="about">
-        <div class="about-grid-layout">
-            <div class="about-content-left">
-                <h2>About Me</h2>
-                <p>I am your personal advisor in the Dubai real estate landscape. I believe in total transparency and a banking-level approach to asset selection.</p>
-                <p>My goal is to protect your interests above all else, ensuring that your property acquisition is a strategic financial move, not just a transaction.</p>
-            </div>
-            <div class="reasons-sidebar">
-                <h3 style="margin-bottom:45px; text-transform:uppercase; letter-spacing:4px;">Why Work With Me?</h3>
-                <div class="reason-entry"><strong>1. Independence</strong><p>I am not tied to any single developer; my loyalty is to your portfolio.</p></div>
-                <div class="reason-entry"><strong>2. Data-First Approach</strong><p>Every recommendation is backed by real-time DLD data and market trends.</p></div>
-                <div class="reason-entry"><strong>3. End-to-End Support</strong><p>From project selection to handover, I handle the complexities.</p></div>
-                <div class="reason-entry"><strong>4. Transparency</strong><p>No hidden fees or marketing hype—just real, actionable facts.</p></div>
-                <div class="reason-entry"><strong>5. Market Access</strong><p>I provide exclusive access to off-market and pre-launch opportunities.</p></div>
+    <section id="section-hero">
+        <div class="content-animate">
+            <h1 id="TEXT_H1">Invest with <span style="color:var(--uae-red);">Authority</span>.<br>Exit with <span style="color:var(--gold-accent);">Wealth</span>.</h1>
+            <p class="hero-sub" id="TEXT_HS">I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term capital growth.</p>
+            
+            <div style="display:flex; gap:20px;">
+                <a href="#section-contact" class="submit-button" style="text-decoration:none; width:fit-content; padding:25px 60px; font-size:1.1rem; margin-top:0;">Book Discovery Session</a>
             </div>
         </div>
     </section>
 
-    <section id="portfolio">
-        <h2 style="font-family:'Playfair Display'; font-size:4rem; margin-bottom:60px; text-align:center;">Strategic Opportunities</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <span class="project-meta">Al Rowaiyah, Dubailand</span>
-                <h3>Tilal Binghatti</h3>
-                <p>Exceptional modern villas in one of Dubai’s most promising growth corridors. Built for those who value privacy and capital growth.</p>
-            </div>
-            <div class="project-card" style="border-top-color: #2e7d32;">
-                <span class="project-meta">Abu Dhabi</span>
-                <h3>Sobha City</h3>
-                <p>A masterpiece of construction quality and community design. These assets represent the gold standard of luxury residential investing.</p>
-            </div>
-            <div class="project-card" style="border-top-color: var(--gold);">
-                <span class="project-meta">Marjan Island</span>
-                <h3>Mondrian Residences</h3>
-                <p>Strategic positioning next to the upcoming resort district. A high-yield opportunity within a world-class integrated community.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="form-identity-box">
-            <h2 style="font-family:'Playfair Display'; font-size:3.5rem; margin-bottom:60px; text-align:center;">Private Briefing</h2>
-            <form action="https://formspree.io/f/mkokrndr" method="POST">
-                <div class="form-layout-grid">
-                    <div class="form-field"><label>Full Name</label><input type="text" name="name" required placeholder="Name"></div>
-                    <div class="form-field"><label>WhatsApp Number</label><input type="tel" name="phone" required placeholder="+971 ..."></div>
-                    
-                    <div class="form-field"><label>Budget (AED)</label><input type="number" name="budget" required placeholder="Amount"></div>
-                    <div class="form-field">
-                        <label>Budget Range</label>
-                        <select name="range">
-                            <option>1M - 3M AED</option>
-                            <option>3M - 7M AED</option>
-                            <option>7M - 15M AED</option>
-                            <option>15M+ AED</option>
-                        </select>
+    <section id="section-about">
+        <div class="about-flex-container">
+            
+            <div class="about-biography">
+                <div class="portrait-wrapper">
+                    <div class="round-photo-frame">
+                        <img src="profile.jpg" alt="MR LIVING CAPITAL Advisor Portrait">
                     </div>
-
-                    <div class="form-field field-full">
-                        <label>Investment Timeline</label>
-                        <select name="timeline">
-                            <option>Immediately</option>
-                            <option>Within 3 Months</option>
-                            <option>6 Months +</option>
-                            <option>Researching Only</option>
-                        </select>
-                    </div>
-
-                    <div class="form-field field-full"><label>Questions or Specific Interests</label><textarea name="msg" rows="6" placeholder="Tell me about your investment goals..."></textarea></div>
                 </div>
-                <button type="submit" class="cta-submit-button">Submit Portfolio Request</button>
+                
+                <div class="biography-content">
+                    <h2 id="TEXT_ABOUT_TITLE">About Me</h2>
+                    <p id="TEXT_ABOUT_P1">I am your personal advisor in the Dubai real estate landscape. I believe in total transparency and a banking-level approach to asset selection.</p>
+                    <p id="TEXT_ABOUT_P2">My goal is to protect your interests above all else, ensuring that your property acquisition is a strategic financial move, not just a transaction.</p>
+                </div>
+            </div>
+
+            <div class="reasons-sidebar">
+                <h3 id="TEXT_REASONS_TITLE">Why Work With Me?</h3>
+                
+                <div class="reason-node">
+                    <strong id="REASON_1_T">1. Independence</strong>
+                    <p id="REASON_1_P">I am not tied to any single developer; my loyalty is exclusively to your portfolio and your returns.</p>
+                </div>
+
+                <div class="reason-node">
+                    <strong id="REASON_2_T">2. Data-First Approach</strong>
+                    <p id="REASON_2_P">Every recommendation is backed by real-time DLD transaction data, historical trends, and supply metrics.</p>
+                </div>
+
+                <div class="reason-node">
+                    <strong id="REASON_3_T">3. End-to-End Support</strong>
+                    <p id="REASON_3_P">From initial selection to legal handover and property management, I manage every complexity for you.</p>
+                </div>
+
+                <div class="reason-node">
+                    <strong id="REASON_4_T">4. Total Transparency</strong>
+                    <p id="REASON_4_P">I speak the truth about developer health and project delays. No marketing hype, just actionable facts.</p>
+                </div>
+
+                <div class="reason-node">
+                    <strong id="REASON_5_T">5. Market Access</strong>
+                    <p id="REASON_5_P">I provide my private clients with early access to off-market distressed deals and exclusive pre-launch inventory.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="section-projects">
+        <div class="portfolio-header">
+            <h2 id="TEXT_PORTFOLIO_TITLE">Strategic Opportunities</h2>
+            <p style="font-size:1.3rem; opacity:0.6;" id="TEXT_PORTFOLIO_SUB">Hand-picked assets for capital preservation and appreciation.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            
+            <div class="project-card">
+                <span class="project-meta">Dubailand Corridor</span>
+                <h3>Tilal Binghatti</h3>
+                <p>Premium villa assets designed for high-yield residential demand and steady capital growth.</p>
+            </div>
+
+            <div class="project-card" style="border-top-color: var(--uae-green);">
+                <span class="project-meta" style="color:var(--uae-green);">Abu Dhabi</span>
+                <h3>Sobha City</h3>
+                <p>Setting the gold standard of construction quality and finishings in the capital's newest urban center.</p>
+            </div>
+
+            <div class="project-card" style="border-top-color: var(--gold-accent);">
+                <span class="project-meta">Marjan Island, RAK</span>
+                <h3>Mondrian Residences</h3>
+                <p>Strategically positioned waterfront assets next to the future of the region's leisure district.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="section-advisory">
+        <div style="max-width:1000px; margin:0 auto; text-align:center;">
+            <h2 style="font-family:'Playfair Display'; font-size:4.5rem; margin-bottom:40px;">Professional Integrity.</h2>
+            <p style="font-size:2rem; font-weight:300; line-height:1.5; color:var(--gold-accent);">"In a market of sales tactics, I offer a fiduciary perspective that prioritizes your wealth over developer commissions."</p>
+        </div>
+    </section>
+
+    <section id="section-contact">
+        <div class="form-master-wrapper">
+            <div class="form-heading">
+                <h2 id="TEXT_FORM_TITLE">Private Inquiry</h2>
+                <p id="TEXT_FORM_SUB">Enter your investment objectives for a tailored market briefing.</p>
+            </div>
+
+            <form action="https://formspree.io/f/mkokrndr" method="POST">
+                <div class="form-grid-architecture">
+                    
+                    <div class="form-field-group">
+                        <label>Full Name</label>
+                        <input type="text" name="client_name" required placeholder="Ex: John Doe">
+                    </div>
+
+                    <div class="form-field-group">
+                        <label>WhatsApp Number</label>
+                        <input type="tel" name="client_phone" required placeholder="+971 ...">
+                    </div>
+
+                    <div class="form-field-group">
+                        <label>Exact Investment (AED)</label>
+                        <input type="number" name="exact_budget" required placeholder="Amount">
+                    </div>
+
+                    <div class="form-field-group">
+                        <label>Budget Tier</label>
+                        <select name="budget_range" required>
+                            <option value="below_1.5m">Below 1.5M AED</option>
+                            <option value="1.5m_3m">1.5M - 3M AED</option>
+                            <option value="3m_5m">3M - 5M AED</option>
+                            <option value="5m_10m">5M - 10M AED</option>
+                            <option value="10m_plus">10M+ AED</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field-group full-span">
+                        <label>Acquisition Timeline</label>
+                        <select name="purchase_timeline">
+                            <option value="immediately">Immediately</option>
+                            <option value="3_months">Within 3 Months</option>
+                            <option value="6_months_plus">6 Months +</option>
+                            <option value="researching">Market Research Only</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field-group full-span">
+                        <label>Primary Project Interest</label>
+                        <select name="project_interest" required>
+                            <option value="tilal_binghatti">Tilal Binghatti (Dubailand)</option>
+                            <option value="sobha_city">Sobha City (Abu Dhabi)</option>
+                            <option value="mondrian_residences">Mondrian Residences (RAK)</option>
+                            <option value="general_advisory">General Portfolio Strategy</option>
+                            <option value="distressed_deals">Off-Market Distressed Deals</option>
+                        </select>
+                    </div>
+
+                </div>
+                
+                <button type="submit" class="submit-button">Submit Briefing Request</button>
             </form>
         </div>
     </section>
 
-    <div class="sticky-social-nav">
-        <a href="https://wa.me/971585899112" class="sticky-btn brand-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-        <a href="https://t.me/masoud_advisor" class="sticky-btn brand-tg"><svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.184 16.51c-.183.18-.432.227-.643.14-.146-.06-.3-.133-.45-.224l-3.323-2.115-1.55 1.5c-.167.162-.43.2-.644.1-.11-.05-.22-.116-.32-.19l-.324-2.146-2.55-1.02c-.225-.09-.36-.312-.34-.543s.182-.423.4-.492l10.37-3.92c.2-.075.42-.045.6.08.18.12.27.33.24.54l-1.48 8.82z"/></svg></a>
-        <a href="https://instagram.com/masoud" class="sticky-btn brand-ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.617 6.78 6.979 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28-.073-1.689-.073-4.948s.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <div class="sticky-social-bar">
+        <a href="https://wa.me/971585899112" class="social-trigger bg-wa" target="_blank" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        
+        <a href="https://t.me/masoud_advisor" class="social-trigger bg-tg" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.184 16.51c-.183.18-.432.227-.643.14-.146-.06-.3-.133-.45-.224l-3.323-2.115-1.55 1.5c-.167.162-.43.2-.644.1-.11-.05-.22-.116-.32-.19l-.324-2.146-2.55-1.02c-.225-.09-.36-.312-.34-.543s.182-.423.4-.492l10.37-3.92c.2-.075.42-.045.6.08.18.12.27.33.24.54l-1.48 8.82z"/></svg>
+        </a>
+
+        <a href="https://instagram.com/masoud" class="social-trigger bg-ig" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.617 6.78 6.979 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28-.073-1.689-.073-4.948s.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
     </div>
 
     <script>
-        /* LINE 650: TRANSLATION ENGINE 
+        /* DATA OBJECT: Linguistic Dictionaries 
         */
-        const Locales = {
-            en: { H1: "Invest with <span style='color:var(--red);'>Authority</span>.<br>Exit with <span style='color:var(--gold);'>Wealth</span>.", HS: "I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term wealth." },
-            ar: { H1: "استثمر <span style='color:var(--red);'>بسلطة</span>.<br>واخرج <span style='color:var(--gold);'>بثروة</span>.", HS: "أقدم استشارات عقارية مستقلة لمساعدتك في سوق دبی من خلال رؤى مبنية على البيانات والتركیز على الثروة طویلة الأمد." },
-            fa: { H1: "با <span style='color:var(--red);'>اقتدار</span> سرمایه‌گذاری کنید.<br>با <span style='color:var(--gold);'>ثروت</span> خارج شوید.", HS: "من مشاوره مستقل املاک ارائه می‌دهم تا با استفاده از داده‌های دقیق، بهترین تصمیم را برای ثروت بلندمدت خود بگیرید." }
+        const Dictionary = {
+            en: {
+                H1: "Invest with <span style='color:var(--uae-red);'>Authority</span>.<br>Exit with <span style='color:var(--gold-accent);'>Wealth</span>.",
+                HS: "I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term capital growth.",
+                ABOUT_TITLE: "About Me",
+                ABOUT_P1: "I am your personal advisor in the Dubai real estate landscape. I believe in total transparency and a banking-level approach to asset selection.",
+                ABOUT_P2: "My goal is to protect your interests above all else, ensuring that your property acquisition is a strategic financial move, not just a transaction."
+            },
+            ar: {
+                H1: "استثمر <span style='color:var(--uae-red);'>بسلطة</span>.<br>واخرج <span style='color:var(--gold-accent);'>بثروة</span>.",
+                HS: "أقدم استشارات عقارية مستقلة لمساعدتك في سوق دبي من خلال رؤى مبنية على البيانات والتركيز على نمو رأس المال طويل الأجل.",
+                ABOUT_TITLE: "من أنا",
+                ABOUT_P1: "أنا مستشارك الشخصي في سوق العقارات في دبي. أؤمن بالشفافية المطلقة والنهج المصرفي في اختيار الأصول.",
+                ABOUT_P2: "هدفي هو حماية مصالحك فوق كل شيء، وضمان أن شراء عقارك هو خطوة مالية استراتيجية، وليس مجرد معاملة."
+            },
+            fa: {
+                H1: "با <span style='color:var(--uae-red);'>اقتدار</span> سرمایه‌گذاری کنید.<br>با <span style='color:var(--gold-accent);'>ثروت</span> خارج شوید.",
+                HS: "من مشاوره مستقل املاک ارائه می‌دهم تا با استفاده از داده‌های دقیق، بهترین تصمیم را برای رشد سرمایه بلندمدت خود در بازار دبی بگیرید.",
+                ABOUT_TITLE: "درباره من",
+                ABOUT_P1: "من مشاور شخصی شما در بازار املاک دبی هستم. من به شفافیت کامل و رویکردی در سطح بانکی در انتخاب دارایی اعتقاد دارم.",
+                ABOUT_P2: "هدف من محافظت از منافع شماست تا اطمینان حاصل شود که خرید ملک شما یک حرکت استراتژیک مالی است، نه فقط یک معامله."
+            }
         };
 
-        function setLocale(lang, btn) {
-            document.body.classList.toggle('rtl', lang !== 'en');
-            document.querySelectorAll('.lang-button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('L_H1').innerHTML = Locales[lang].H1;
-            document.getElementById('L_HS').innerText = Locales[lang].HS;
+        /* FUNCTION: Handle Language Switching & RTL Logic
+        */
+        function changeLanguage(lang, btnElement) {
+            // Update Body Direction
+            const isRTL = (lang === 'ar' || lang === 'fa');
+            document.body.className = isRTL ? 'rtl' : 'ltr';
+
+            // Update Active Button State
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            btnElement.classList.add('active');
+
+            // Apply Text Changes
+            document.getElementById('TEXT_H1').innerHTML = Dictionary[lang].H1;
+            document.getElementById('TEXT_HS').innerText = Dictionary[lang].HS;
+            document.getElementById('TEXT_ABOUT_TITLE').innerText = Dictionary[lang].ABOUT_TITLE;
+            document.getElementById('TEXT_ABOUT_P1').innerText = Dictionary[lang].ABOUT_P1;
+            document.getElementById('TEXT_ABOUT_P2').innerText = Dictionary[lang].ABOUT_P2;
         }
 
-        /* LINE 680: VIEWPORT TRACKER 
+        /* FUNCTION: Intersection Observer for Background Image Swapping
         */
         const sections = document.querySelectorAll('section');
-        const layers = document.querySelectorAll('.bg-layer');
+        const bgLayers = document.querySelectorAll('.bg-layer');
 
-        const observer = new IntersectionObserver((entries) => {
+        const observerOptions = {
+            root: null,
+            threshold: 0.45, // Detect when 45% of the section is visible
+            rootMargin: "0px"
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    layers.forEach(layer => {
+                    const sectionId = entry.target.getAttribute('id');
+                    
+                    // Remove active class from all layers
+                    bgLayers.forEach(layer => {
                         layer.classList.remove('active');
-                        if (layer.id === 'bg-' + id) {
-                            layer.classList.add('active');
-                        }
                     });
+
+                    // Add active class to corresponding background layer
+                    const targetLayer = document.getElementById('bg-' + sectionId);
+                    if (targetLayer) {
+                        targetLayer.classList.add('active');
+                    }
                 }
             });
-        }, { threshold: 0.45 });
+        }, observerOptions);
 
-        sections.forEach(s => observer.observe(s));
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        /* LOGIC: Ensure Nav clicks smooth scroll 
+        */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
+
 </body>
 </html>
