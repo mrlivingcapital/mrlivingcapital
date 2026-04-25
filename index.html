@@ -14,6 +14,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;600&display=swap" rel="stylesheet">
 
     <style>
+/* LANDMARK GRID STYLING */
+.landmark-transition-container { padding: 120px 8%; background: var(--uae-black); }
+.landmark-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.landmark-card { text-align: center; }
+.landmark-card img { 
+    width: 100%; aspect-ratio: 4/5; object-fit: cover; 
+    filter: grayscale(100%); transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+    border: 1px solid rgba(230, 170, 32, 0.2);
+}
+.landmark-card:hover img { 
+    filter: grayscale(0%); transform: translateY(-10px); 
+    border-color: var(--gold-accent); 
+}
+.landmark-card p { 
+    color: var(--gold-accent); margin-top: 15px; 
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; 
+}
+
+/* Tablet & Mobile Grid Logic */
+@media (max-width: 1100px) { .landmark-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .landmark-grid { grid-template-columns: 1fr; } }
         /* SECTION: GLOBAL VARIABLES & UAE FLAG COLOR PALETTE
         ------------------------------------------------------------
         */
@@ -520,7 +541,7 @@
         
         <div class="bg-layer" id="bg-section-projects" style="background-image: url('https://images.unsplash.com/photo-1549468057-5b7fa1a41d7a?q=80&w=2400');"></div>
         
-        <div class="bg-layer" id="bg-section-advisory" style="background-image: url('https://images.unsplash.com/photo-1528702748617-c64d49f918af?q=80&w=2400');"></div>
+<div class="bg-layer" id="bg-section-landmarks" style="background-image: url('https://images.unsplash.com/photo-1528702748617-c64d49f918af?q=80&w=2400');"></div>
         
         <div class="bg-layer" id="bg-section-contact" style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=2400');"></div>
     </div>
@@ -551,7 +572,7 @@
             <div class="about-biography">
                 <div class="portrait-wrapper">
                     <div class="round-photo-frame">
-                        <img src="profile.jpg" alt="MR LIVING CAPITAL Advisor Portrait">
+                        <img src="MRLC.jpg" alt="MR LIVING CAPITAL Advisor Portrait">
                     </div>
                 </div>
                 
@@ -623,13 +644,33 @@
         </div>
     </section>
 
-    <section id="section-advisory">
-        <div style="max-width:1000px; margin:0 auto; text-align:center;">
-            <h2 style="font-family:'Playfair Display'; font-size:4.5rem; margin-bottom:40px;">Professional Integrity.</h2>
-            <p style="font-size:2rem; font-weight:300; line-height:1.5; color:var(--gold-accent);">"In a market of sales tactics, I offer a fiduciary perspective that prioritizes your wealth over developer commissions."</p>
+<section id="section-landmarks" class="landmark-transition-container">
+    <div class="landmark-content">
+        <h2 style="font-family:'Playfair Display'; font-size:4.5rem; text-align:center; margin-bottom:80px;">UAE Strategic Landscapes</h2>
+        <div class="landmark-grid">
+            <div class="landmark-card">
+                <img src="https://images.unsplash.com/photo-1597659840241-37e2b9c2f55f?q=80&w=800" alt="Burj Khalifa">
+                <p>Burj Khalifa</p>
+            </div>
+            <div class="landmark-card">
+                <img src="https://images.unsplash.com/photo-1549468057-5b7fa1a41d7a?q=80&w=800" alt="Sheikh Zayed Grand Mosque">
+                <p>Sheikh Zayed Mosque</p>
+            </div>
+            <div class="landmark-card">
+                <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=800" alt="Palm Jumeirah">
+                <p>Palm Jumeirah</p>
+            </div>
+            <div class="landmark-card">
+                <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=800" alt="Louvre Abu Dhabi">
+                <p>Louvre Abu Dhabi</p>
+            </div>
+            <div class="landmark-card">
+                <img src="https://images.unsplash.com/photo-1528702748617-c64d49f918af?q=80&w=800" alt="Jebel Jais">
+                <p>Jebel Jais</p>
+            </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <section id="section-contact">
         <div class="form-master-wrapper">
             <div class="form-heading">
@@ -637,7 +678,7 @@
                 <p id="TEXT_FORM_SUB">Enter your investment objectives for a tailored market briefing.</p>
             </div>
 
-            <form action="https://formspree.io/f/mkokrndr" method="POST">
+            <form action="https://formspree.io/f/mqewqkvo" method="POST">
                 <div class="form-grid-architecture">
                     
                     <div class="form-field-group">
@@ -670,7 +711,9 @@
                         <label>Acquisition Timeline</label>
                         <select name="purchase_timeline">
                             <option value="immediately">Immediately</option>
-                            <option value="3_months">Within 3 Months</option>
+                            <option value="2_to_4_weeks">2 to 4 weeks</option>
+                            <option value="1_to_2_months">Within 2 Months</option>
+                            <option value="3_to_6_months">3 to 6 Months</option>
                             <option value="6_months_plus">6 Months +</option>
                             <option value="researching">Market Research Only</option>
                         </select>
@@ -699,11 +742,11 @@
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
         
-        <a href="https://t.me/masoud_advisor" class="social-trigger bg-tg" target="_blank" aria-label="Telegram">
+        <a href="https://t.me/mrlivingcapital" class="social-trigger bg-tg" target="_blank" aria-label="Telegram">
             <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.184 16.51c-.183.18-.432.227-.643.14-.146-.06-.3-.133-.45-.224l-3.323-2.115-1.55 1.5c-.167.162-.43.2-.644.1-.11-.05-.22-.116-.32-.19l-.324-2.146-2.55-1.02c-.225-.09-.36-.312-.34-.543s.182-.423.4-.492l10.37-3.92c.2-.075.42-.045.6.08.18.12.27.33.24.54l-1.48 8.82z"/></svg>
         </a>
 
-        <a href="https://instagram.com/masoud" class="social-trigger bg-ig" target="_blank" aria-label="Instagram">
+        <a href="https://instagram.com/mrlivingcapital" class="social-trigger bg-ig" target="_blank" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.617 6.78 6.979 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28-.073-1.689-.073-4.948s.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
     </div>
