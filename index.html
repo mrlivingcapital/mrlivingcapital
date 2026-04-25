@@ -3,51 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MR LIVING CAPITAL - 19 Years Institutional Banking Excellence in Dubai Real Estate">
-    <title>MR LIVING CAPITAL | Dubai Real Estate Fiduciary</title>
+    <title>MR LIVING CAPITAL | Personal Real Estate Advisor</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;600&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================================
-           1. CORE ARCHITECTURE & CSS VARIABLES
-           ================================================================
+        /* LINE 20: DESIGN TOKENS 
         */
         :root {
             --red: #CE1126;
-            --red-deep: #8E0C1B;
-            --green: #00732F;
             --black: #000000;
-            --dark-gray: #0A0A0A;
             --white: #FFFFFF;
             --gold: #E6AA20;
-            --glass: rgba(12, 12, 12, 0.94);
-            --border-white: rgba(255, 255, 255, 0.1);
-            --transition-engine: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --dark-grey: #121212;
+            --glass-panel: rgba(10, 10, 10, 0.97);
+            --transition-speed: 1.3s;
+            --easing: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* LINE 35: GLOBAL RESET 
+        */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             outline: none;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
             background-color: var(--black);
             color: var(--white);
             font-family: 'DM Sans', sans-serif;
-            font-weight: 300;
-            line-height: 1.8;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.8;
+            scroll-behavior: smooth;
         }
 
         body.rtl {
@@ -55,16 +48,14 @@
             font-family: 'Noto Sans Arabic', sans-serif;
         }
 
-        /* ================================================================
-           2. CINEMATIC BACKGROUND ENGINE (Z-STACK)
-           ================================================================
+        /* LINE 65: CINEMATIC BACKGROUND ENGINE 
         */
         .bg-container {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             background: #000;
         }
@@ -78,89 +69,70 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1.8s ease-in-out;
-            filter: brightness(0.28) contrast(1.1);
+            transition: opacity 2.5s ease-in-out;
+            filter: brightness(0.4) contrast(1.15);
         }
 
-        /* The layer becomes active when scrolled into view */
         .bg-layer.active {
             opacity: 1;
             z-index: 1;
         }
 
-        /* ================================================================
-           3. INSTITUTIONAL NAVIGATION
-           ================================================================
+        /* LINE 100: HEADER & NAVIGATION 
         */
         nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 95px;
-            z-index: 5000;
-            background: rgba(255, 255, 255, 0.99);
+            height: 110px;
+            z-index: 9999;
+            background: var(--white);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 7%;
-            border-bottom: 5px solid var(--red);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .brand-block {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
+            padding: 0 8%;
+            border-bottom: 7px solid var(--red);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
         }
 
         .nav-logo {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
             color: var(--black);
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-            line-height: 1;
-        }
-
-        .nav-tagline {
-            font-size: 0.65rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -1.5px;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--red);
-            font-weight: 700;
-            margin-top: 5px;
+            text-decoration: none;
         }
 
-        .language-hub {
+        .lang-control {
             display: flex;
-            gap: 12px;
+            gap: 15px;
         }
 
-        .lang-trigger {
+        .lang-button {
             background: transparent;
-            border: 1px solid #E0E0E0;
-            color: #444;
-            padding: 8px 18px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            border: 1.5px solid #ddd;
+            padding: 14px 24px;
             cursor: pointer;
-            transition: var(--transition-engine);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.4s;
+            color: var(--black);
+            text-transform: uppercase;
         }
 
-        .lang-trigger.active {
+        .lang-button.active {
             background: var(--black);
             color: var(--white);
             border-color: var(--black);
         }
 
-        /* ================================================================
-           4. LAYOUT STRUCTURE
-           ================================================================
+        /* LINE 155: SECTION FRAMEWORK 
         */
         section {
             min-height: 100vh;
-            padding: 180px 10% 120px;
+            padding: 220px 10% 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -168,425 +140,372 @@
             z-index: 10;
         }
 
-        .content-limit {
-            max-width: 1100px;
-        }
-
-        h1 {
+        .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3.2rem, 9vw, 5.8rem);
-            line-height: 1.05;
-            margin-bottom: 35px;
-            font-weight: 700;
-        }
-
-        .accent-red { color: var(--red); }
-        .accent-gold { color: var(--gold); }
-
-        .hero-statement {
-            font-size: 1.35rem;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 750px;
+            font-size: clamp(3.8rem, 11vw, 7rem);
+            line-height: 1;
             margin-bottom: 50px;
-            border-left: 4px solid var(--red);
-            padding-left: 30px;
+            font-style: italic;
         }
 
-        /* ================================================================
-           5. PORTFOLIO GRID (CORRECTED GEOGRAPHY)
-           ================================================================
+        .hero-description {
+            font-size: 1.7rem;
+            max-width: 900px;
+            color: rgba(255, 255, 255, 0.98);
+            border-left: 10px solid var(--red);
+            padding-left: 40px;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        /* LINE 195: ABOUT ME COMPONENT 
         */
-        .portfolio-header {
-            margin-bottom: 70px;
-        }
-
-        .portfolio-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-
-        .asset-grid {
+        .about-grid-layout {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 120px;
+            align-items: flex-start;
         }
 
-        .asset-card {
-            background: var(--glass);
-            border: 1px solid var(--border-white);
-            padding: 55px 45px;
-            position: relative;
-            transition: var(--transition-engine);
-            border-top: 6px solid var(--red);
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .asset-card:hover {
-            transform: translateY(-25px);
-            border-color: var(--gold);
-            background: rgba(18, 18, 18, 0.98);
-        }
-
-        .asset-label {
-            font-size: 0.7rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 3.5px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            display: block;
-        }
-
-        .asset-card h3 {
+        .about-content-left h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 35px;
         }
 
-        .asset-desc {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 45px;
-            flex-grow: 1;
+        .about-content-left p {
+            font-size: 1.35rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 650px;
         }
 
-        .asset-metrics {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 25px;
-        }
-
-        .metric-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-        }
-
-        .metric-val {
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .m-green { color: #4AE87A; }
-
-        /* ================================================================
-           6. ADVISORY LEAD GENERATION
-           ================================================================
-        */
-        .fiduciary-form-box {
-            background: var(--white);
-            color: var(--black);
-            padding: 85px 10%;
-            max-width: 1050px;
-            margin: 0 auto;
-            border-radius: 2px;
+        .reasons-sidebar {
+            background: var(--glass-panel);
+            padding: 65px;
+            border-right: 8px solid var(--gold);
+            backdrop-filter: blur(30px);
             box-shadow: 0 40px 80px rgba(0,0,0,0.6);
         }
 
-        .form-header {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 45px;
-            text-align: center;
-            letter-spacing: -1px;
+        .reason-entry {
+            margin-bottom: 40px;
         }
 
-        .form-layout {
+        .reason-entry strong {
+            display: block;
+            color: var(--gold);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .reason-entry p {
+            font-size: 1.15rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* LINE 255: PORTFOLIO GRID 
+        */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .project-card {
+            background: var(--glass-panel);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 80px 60px;
+            border-top: 12px solid var(--red);
+            transition: var(--transition-speed) var(--easing);
+        }
+
+        .project-card:hover {
+            transform: translateY(-30px);
+            border-color: var(--gold);
+            background: rgba(18, 18, 18, 1);
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            display: block;
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        /* LINE 305: LEAD GENERATION FORM 
+        */
+        .form-identity-box {
+            background: var(--white);
+            color: var(--black);
+            padding: 100px 12%;
+            max-width: 1300px;
+            margin: 0 auto;
+            border-radius: 4px;
+            box-shadow: 0 60px 120px rgba(0,0,0,0.7);
+        }
+
+        .form-layout-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 35px;
+            gap: 45px;
         }
 
-        .field-full { grid-column: span 2; }
+        .field-full {
+            grid-column: span 2;
+        }
 
-        .field-wrap label {
-            display: block;
-            font-size: 0.75rem;
+        .form-field label {
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #888;
-            margin-bottom: 12px;
+            color: #999;
+            display: block;
+            margin-bottom: 18px;
+            letter-spacing: 2.5px;
         }
 
-        .field-wrap input, 
-        .field-wrap select, 
-        .field-wrap textarea {
+        .form-field input, 
+        .form-field select, 
+        .form-field textarea {
             width: 100%;
-            padding: 22px;
-            background: #F9F9F9;
-            border: 1px solid #E8E8E8;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--black);
-            transition: var(--transition-engine);
+            padding: 26px;
+            background: #f9f9f9;
+            border: 1.5px solid #eee;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            transition: 0.4s;
         }
 
-        .field-wrap input:focus {
+        .form-field input:focus {
             border-color: var(--red);
             background: #fff;
         }
 
-        .master-cta {
+        .cta-submit-button {
             width: 100%;
             background: var(--black);
             color: var(--white);
-            padding: 28px;
+            padding: 40px;
             border: none;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
             cursor: pointer;
-            margin-top: 40px;
-            transition: var(--transition-engine);
-            font-size: 0.95rem;
+            margin-top: 60px;
+            font-size: 1.3rem;
+            letter-spacing: 5px;
+            transition: 0.6s;
         }
 
-        .master-cta:hover {
-            background: var(--red-deep);
-            transform: scale(0.99);
+        .cta-submit-button:hover {
+            background: var(--red);
+            letter-spacing: 10px;
         }
 
-        /* ================================================================
-           7. PERSISTENT STICKY SOCIALS (WA, TG, IG)
-           ================================================================
+        /* LINE 380: STICKY SOCIAL INTERFACE 
         */
-        .sticky-social-control {
+        .sticky-social-nav {
             position: fixed;
-            bottom: 45px;
-            right: 45px;
+            bottom: 70px;
+            right: 70px;
             z-index: 9999;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 30px;
         }
 
-        .social-trigger {
-            width: 68px;
-            height: 68px;
+        .sticky-btn {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .social-trigger:hover {
-            transform: scale(1.15) translateY(-8px);
-        }
-
-        .social-trigger svg {
-            width: 32px;
-            height: 32px;
+        .sticky-btn svg {
+            width: 38px;
             fill: #fff;
         }
 
-        .color-wa { background: #25D366; }
-        .color-tg { background: #229ED9; }
-        .color-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+        .brand-wa { background: #25D366; }
+        .brand-tg { background: #229ED9; }
+        .brand-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
 
-        /* ================================================================
-           8. ADAPTIVE RESPONSIVENESS
-           ================================================================
-        */
-        @media (max-width: 1200px) {
-            .asset-grid { grid-template-columns: 1fr 1fr; }
+        .sticky-btn:hover {
+            transform: scale(1.3) translateY(-15px);
         }
 
-        @media (max-width: 768px) {
-            section { padding: 140px 7% 80px; }
-            nav { height: 80px; }
-            .asset-grid, .form-layout { grid-template-columns: 1fr; }
+        /* LINE 430: MOBILE ADAPTIVITY 
+        */
+        @media (max-width: 1100px) {
+            .about-grid-layout { grid-template-columns: 1fr; }
+            .form-layout-grid { grid-template-columns: 1fr; }
             .field-full { grid-column: span 1; }
-            h1 { font-size: 3.5rem; }
-            .sticky-social-control { bottom: 25px; right: 25px; }
-            .social-trigger { width: 60px; height: 60px; }
+            .hero-title { font-size: 4rem; }
+            section { padding: 160px 8% 100px; }
+            .sticky-social-nav { right: 30px; bottom: 30px; }
         }
     </style>
 </head>
-<body id="master-view">
+<body>
 
     <div class="bg-container">
         <div class="bg-layer active" id="bg-hero" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2000');"></div>
-        <div class="bg-layer" id="bg-portfolio" style="background-image: url('https://images.unsplash.com/photo-1582672093232-995639170c0c?q=80&w=2000');"></div>
-        <div class="bg-layer" id="bg-fiduciary" style="background-image: url('https://images.unsplash.com/photo-1544923246-77307dd654ca?q=80&w=2000');"></div>
-        <div class="bg-layer" id="bg-strategy" style="background-image: url('https://images.unsplash.com/photo-1528901166007-3784c7dd3653?q=80&w=2000');"></div>
+        <div class="bg-layer" id="bg-about" style="background-image: url('https://images.unsplash.com/photo-1582672093232-995639170c0c?q=80&w=2000');"></div>
+        <div class="bg-layer" id="bg-portfolio" style="background-image: url('https://images.unsplash.com/photo-1578133671510-dec64293994a?q=80&w=2000');"></div>
+        <div class="bg-layer" id="bg-advisory" style="background-image: url('https://images.unsplash.com/photo-1634714101031-f594e222956f?q=80&w=2000');"></div>
+        <div class="bg-layer" id="bg-contact" style="background-image: url('https://images.unsplash.com/photo-1528901166007-3784c7dd3653?q=80&w=2000');"></div>
     </div>
 
     <nav>
-        <div class="brand-block" onclick="window.scrollTo(0,0)">
-            <div class="nav-logo">MR LIVING CAPITAL</div>
-            <div class="nav-tagline">19 Years Institutional Banking Fiduciary</div>
-        </div>
-        <div class="language-hub">
-            <button class="lang-trigger active" onclick="execLang('en', this)">EN</button>
-            <button class="lang-trigger" onclick="execLang('ar', this)">AR</button>
-            <button class="lang-trigger" onclick="execLang('fa', this)">FA</button>
+        <a href="#" class="nav-logo">MR LIVING CAPITAL</a>
+        <div class="lang-control">
+            <button class="lang-button active" onclick="setLocale('en', this)">EN</button>
+            <button class="lang-button" onclick="setLocale('ar', this)">AR</button>
+            <button class="lang-button" onclick="setLocale('fa', this)">FA</button>
         </div>
     </nav>
 
     <section id="hero">
-        <div class="content-limit">
-            <h1 id="L_H1">Secure <span class="accent-red">Capital</span>.<br>Own Dubai's <span class="accent-gold">Future</span>.</h1>
-            <p class="hero-statement" id="L_HS">A legacy of 19 years in institutional banking. We provide fiduciary real estate advisory, protecting HNW portfolios from speculation through data-driven due diligence.</p>
-            <a href="#strategy" class="master-cta" style="text-decoration:none; display:inline-block; width:fit-content; padding:25px 65px;" id="L_CTA">Request Private Strategy Session</a>
+        <h1 class="hero-title" id="L_H1">Invest with <span style="color:var(--red);">Authority</span>.<br>Exit with <span style="color:var(--gold);">Wealth</span>.</h1>
+        <p class="hero-description" id="L_HS">I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term wealth.</p>
+        <a href="#contact" class="cta-submit-button" style="text-decoration:none; width:fit-content; padding:25px 80px;">Book a Consultation</a>
+    </section>
+
+    <section id="about">
+        <div class="about-grid-layout">
+            <div class="about-content-left">
+                <h2>About Me</h2>
+                <p>I am your personal advisor in the Dubai real estate landscape. I believe in total transparency and a banking-level approach to asset selection.</p>
+                <p>My goal is to protect your interests above all else, ensuring that your property acquisition is a strategic financial move, not just a transaction.</p>
+            </div>
+            <div class="reasons-sidebar">
+                <h3 style="margin-bottom:45px; text-transform:uppercase; letter-spacing:4px;">Why Work With Me?</h3>
+                <div class="reason-entry"><strong>1. Independence</strong><p>I am not tied to any single developer; my loyalty is to your portfolio.</p></div>
+                <div class="reason-entry"><strong>2. Data-First Approach</strong><p>Every recommendation is backed by real-time DLD data and market trends.</p></div>
+                <div class="reason-entry"><strong>3. End-to-End Support</strong><p>From project selection to handover, I handle the complexities.</p></div>
+                <div class="reason-entry"><strong>4. Transparency</strong><p>No hidden fees or marketing hype—just real, actionable facts.</p></div>
+                <div class="reason-entry"><strong>5. Market Access</strong><p>I provide exclusive access to off-market and pre-launch opportunities.</p></div>
+            </div>
         </div>
     </section>
 
     <section id="portfolio">
-        <div class="portfolio-header">
-            <h2 id="L_PH">The Prime Portfolio</h2>
-            <p style="opacity:0.6; font-size:1.1rem;" id="L_PS">Curated institutional-grade assets with verified escrow status.</p>
-        </div>
-        
-        <div class="asset-grid">
-            <div class="asset-card">
-                <span class="asset-label">Al Rowaiyah, Dubailand</span>
+        <h2 style="font-family:'Playfair Display'; font-size:4rem; margin-bottom:60px; text-align:center;">Strategic Opportunities</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <span class="project-meta">Al Rowaiyah, Dubailand</span>
                 <h3>Tilal Binghatti</h3>
-                <p class="asset-desc" id="L_P1D">Institutional-grade residential villas in the Dubailand growth corridor. Engineered for maximum capital appreciation and legacy wealth building.</p>
-                <div class="asset-metrics">
-                    <div class="metric-row"><span>Target Appreciation</span><span class="metric-val m-green">High</span></div>
-                    <div class="metric-row"><span>Construction Status</span><span class="metric-val">On Schedule</span></div>
-                </div>
+                <p>Exceptional modern villas in one of Dubai’s most promising growth corridors. Built for those who value privacy and capital growth.</p>
             </div>
-            <div class="asset-card" style="border-top-color: var(--green);">
-                <span class="asset-label">Abu Dhabi</span>
+            <div class="project-card" style="border-top-color: #2e7d32;">
+                <span class="project-meta">Abu Dhabi</span>
                 <h3>Sobha City</h3>
-                <p class="asset-desc" id="L_P2D">The gold standard of build quality in the UAE. A defensive asset class ideal for long-term capital preservation and high-end rental yields.</p>
-                <div class="asset-metrics">
-                    <div class="metric-row"><span>Quality Index</span><span class="metric-val">Grade A++</span></div>
-                    <div class="metric-row"><span>Investor Profile</span><span class="metric-val">Conservative Growth</span></div>
-                </div>
+                <p>A masterpiece of construction quality and community design. These assets represent the gold standard of luxury residential investing.</p>
             </div>
-            <div class="asset-card" style="border-top-color: var(--gold);">
-                <span class="asset-label">Marjan Island, RAK</span>
+            <div class="project-card" style="border-top-color: var(--gold);">
+                <span class="project-meta">Marjan Island</span>
                 <h3>Mondrian Residences</h3>
-                <p class="asset-desc" id="L_P3D">Strategic speculative opportunity adjacent to the upcoming Wynn Integrated Resort. A unique play on the emerging UAE gaming and tourism sector.</p>
-                <div class="asset-metrics">
-                    <div class="metric-row"><span>Exit Timeline</span><span class="metric-val m-green">Short-Term Flip</span></div>
-                    <div class="metric-row"><span>Market Catalyst</span><span class="metric-val">Wynn Casino Opening</span></div>
-                </div>
+                <p>Strategic positioning next to the upcoming resort district. A high-yield opportunity within a world-class integrated community.</p>
             </div>
         </div>
     </section>
 
-    <section id="fiduciary">
-        <div style="max-width:850px; background:var(--glass); padding:70px; border-left:12px solid var(--red); box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
-            <h2 style="font-family:'Playfair Display'; font-size:2.8rem; margin-bottom:25px;" id="L_AH">Banking Mindset. Real Estate Results.</h2>
-            <p style="font-size:1.15rem; opacity:0.9;" id="L_AD">We are not brokers; we are fiduciaries. Every project in our portfolio undergoes a rigorous 42-point verification process including DLD project tracking, infrastructure milestone audits, and ROI sensitivity modeling.</p>
-        </div>
-    </section>
-
-    <section id="strategy">
-        <div class="fiduciary-form-box">
-            <h2 class="form-header" id="L_FT">Private Investment Briefing</h2>
+    <section id="contact">
+        <div class="form-identity-box">
+            <h2 style="font-family:'Playfair Display'; font-size:3.5rem; margin-bottom:60px; text-align:center;">Private Briefing</h2>
             <form action="https://formspree.io/f/mkokrndr" method="POST">
-                <div class="form-layout">
-                    <div class="field-wrap"><label id="L_F1">Principal Name</label><input type="text" name="name" required placeholder="Enter full name"></div>
-                    <div class="field-wrap"><label id="L_F2">WhatsApp Identification</label><input type="tel" name="phone" required placeholder="+971 ..."></div>
-                    <div class="field-wrap field-full">
-                        <label id="L_F3">Portfolio Interest</label>
-                        <select name="portfolio_selection">
-                            <option>Tilal Binghatti (Dubailand)</option>
-                            <option>Sobha City (Abu Dhabi)</option>
-                            <option>Mondrian RAK (Casino Play)</option>
-                            <option>Off-Market Distress Assets</option>
+                <div class="form-layout-grid">
+                    <div class="form-field"><label>Full Name</label><input type="text" name="name" required placeholder="Name"></div>
+                    <div class="form-field"><label>WhatsApp Number</label><input type="tel" name="phone" required placeholder="+971 ..."></div>
+                    
+                    <div class="form-field"><label>Budget (AED)</label><input type="number" name="budget" required placeholder="Amount"></div>
+                    <div class="form-field">
+                        <label>Budget Range</label>
+                        <select name="range">
+                            <option>1M - 3M AED</option>
+                            <option>3M - 7M AED</option>
+                            <option>7M - 15M AED</option>
+                            <option>15M+ AED</option>
                         </select>
                     </div>
-                    <div class="field-wrap field-full"><label id="L_F4">Specific Requirements</label><textarea name="message" rows="5" placeholder="Briefly describe your investment horizon and target ROI..."></textarea></div>
+
+                    <div class="form-field field-full">
+                        <label>Investment Timeline</label>
+                        <select name="timeline">
+                            <option>Immediately</option>
+                            <option>Within 3 Months</option>
+                            <option>6 Months +</option>
+                            <option>Researching Only</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field field-full"><label>Questions or Specific Interests</label><textarea name="msg" rows="6" placeholder="Tell me about your investment goals..."></textarea></div>
                 </div>
-                <button type="submit" class="master-cta" id="L_FS">Submit Secure Request</button>
+                <button type="submit" class="cta-submit-button">Submit Portfolio Request</button>
             </form>
         </div>
     </section>
 
-    <div class="sticky-social-control">
-        <a href="https://wa.me/971585899112" class="social-trigger color-wa" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-        <a href="https://t.me/masoud_advisor" class="social-trigger color-tg" title="Telegram"><svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.184 16.51c-.183.18-.432.227-.643.14-.146-.06-.3-.133-.45-.224l-3.323-2.115-1.55 1.5c-.167.162-.43.2-.644.1-.11-.05-.22-.116-.32-.19l-.324-2.146-2.55-1.02c-.225-.09-.36-.312-.34-.543s.182-.423.4-.492l10.37-3.92c.2-.075.42-.045.6.08.18.12.27.33.24.54l-1.48 8.82z"/></svg></a>
-        <a href="https://instagram.com/masoud" class="social-trigger color-ig" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.617 6.78 6.979 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28-.073-1.689-.073-4.948s.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <div class="sticky-social-nav">
+        <a href="https://wa.me/971585899112" class="sticky-btn brand-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://t.me/masoud_advisor" class="sticky-btn brand-tg"><svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.184 16.51c-.183.18-.432.227-.643.14-.146-.06-.3-.133-.45-.224l-3.323-2.115-1.55 1.5c-.167.162-.43.2-.644.1-.11-.05-.22-.116-.32-.19l-.324-2.146-2.55-1.02c-.225-.09-.36-.312-.34-.543s.182-.423.4-.492l10.37-3.92c.2-.075.42-.045.6.08.18.12.27.33.24.54l-1.48 8.82z"/></svg></a>
+        <a href="https://instagram.com/masoud" class="sticky-btn brand-ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.617 6.78 6.979 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28-.073-1.689-.073-4.948s.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
     </div>
 
     <script>
-        const Dictionary = {
-            en: {
-                H1: "Secure <span class='accent-red'>Capital</span>.<br>Own Dubai's <span class='accent-gold'>Future</span>.",
-                HS: "A legacy of 19 years in institutional banking. We provide fiduciary real estate advisory, protecting HNW portfolios from speculation through data-driven due diligence.",
-                CTA: "Request Private Strategy Session",
-                PH: "The Prime Portfolio",
-                PS: "Curated institutional-grade assets with verified escrow status.",
-                P1D: "Institutional-grade residential villas in the Dubailand growth corridor. Engineered for maximum capital appreciation and legacy wealth building.",
-                AH: "Banking Mindset. Real Estate Results.",
-                AD: "We are not brokers; we are fiduciaries. Every project in our portfolio undergoes a rigorous 42-point verification process including DLD project tracking and ROI sensitivity modeling.",
-                FT: "Private Investment Briefing",
-                F1: "Principal Name", F2: "WhatsApp Identification", F3: "Portfolio Interest", F4: "Specific Requirements",
-                FS: "Submit Secure Request"
-            },
-            ar: {
-                H1: "أمن <span class='accent-red'>رأس مالك</span>.<br>تملك <span class='accent-gold'>مستقبل</span> دبي.",
-                HS: "١٩ عاماً من الخبرة في الخدمات المصرفية المؤسسية. نقدم استشارات عقارية ائتمانية لحماية المحافظ الاستثمارية من المضاربة.",
-                CTA: "طلب جلسة استراتيجية خاصة",
-                PH: "المحفظة الاستثمارية",
-                PS: "أصول مختارة بمعايير مؤسسية مع تتبع موثق لحسابات الضمان.",
-                P1D: "فيلات سكنية بمستوى مؤسسي في ممر نمو دبي لاند. مصممة لتحقيق أقصى نمو لرأس المال.",
-                AH: "عقلية مصرفية. نتائج عقارية.",
-                AD: "نحن لسنا وسطاء؛ نحن أمناء. يخضع كل مشروع في محفظتنا لعملية تدقيق صارمة تشمل تتبع مشاريع دائرة الأراضي والأملاك.",
-                FT: "إحاطة استثمارية خاصة",
-                F1: "اسم العميل", F2: "رقم الواتساب", F3: "المحفظة المستهدفة", F4: "متطلبات خاصة",
-                FS: "إرسال طلب آمن"
-            },
-            fa: {
-                H1: "امنیت <span class='accent-red'>سرمایه</span>.<br>مالکیت <span class='accent-gold'>آینده</span> دبی.",
-                HS: "۱۹ سال سابقه بانکی در امارات. ما خدمات مشاوره ملکی امانی برای محافظت از پورتفوهای سرمایه‌گذاری در برابر نوسانات بازار ارائه می‌دهیم.",
-                CTA: "درخواست جلسه استراتژی خصوصی",
-                PH: "سبد دارایی‌های برتر",
-                PS: "دارایی‌های منتخب با استانداردهای بانکی و وضعیت تایید شده حساب امانی.",
-                P1D: "ویلاهای مسکونی با استانداردهای نهادی در کریدور رشد دبی‌لاند. طراحی شده برای رشد حداکثری سرمایه.",
-                AH: "ذهنیت بانکی. نتایج ملکی.",
-                AD: "ما دلال نیستیم؛ ما وکیل امانی شما هستیم. هر پروژه در سبد ما تحت فرآیند راستی‌آزمایی ۴۲ مرحله‌ای از جمله پیگیری پروژه‌های DLD قرار می‌گیرد.",
-                FT: "جلسه استراتژیک خصوصی",
-                F1: "نام متقاضی", F2: "شماره واتس‌اپ", F3: "دارایی مورد نظر", F4: "توضیحات اختصاصی",
-                FS: "ارسال درخواست"
-            }
+        /* LINE 650: TRANSLATION ENGINE 
+        */
+        const Locales = {
+            en: { H1: "Invest with <span style='color:var(--red);'>Authority</span>.<br>Exit with <span style='color:var(--gold);'>Wealth</span>.", HS: "I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term wealth." },
+            ar: { H1: "استثمر <span style='color:var(--red);'>بسلطة</span>.<br>واخرج <span style='color:var(--gold);'>بثروة</span>.", HS: "أقدم استشارات عقارية مستقلة لمساعدتك في سوق دبی من خلال رؤى مبنية على البيانات والتركیز على الثروة طویلة الأمد." },
+            fa: { H1: "با <span style='color:var(--red);'>اقتدار</span> سرمایه‌گذاری کنید.<br>با <span style='color:var(--gold);'>ثروت</span> خارج شوید.", HS: "من مشاوره مستقل املاک ارائه می‌دهم تا با استفاده از داده‌های دقیق، بهترین تصمیم را برای ثروت بلندمدت خود بگیرید." }
         };
 
-        function execLang(lang, btn) {
-            // Toggle RTL
+        function setLocale(lang, btn) {
             document.body.classList.toggle('rtl', lang !== 'en');
-            
-            // UI Button State
-            document.querySelectorAll('.lang-trigger').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.lang-button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // Map Translations
-            for (let key in Dictionary[lang]) {
-                const targetEl = document.getElementById('L_' + key);
-                if (targetEl) targetEl.innerHTML = Dictionary[lang][key];
-            }
+            document.getElementById('L_H1').innerHTML = Locales[lang].H1;
+            document.getElementById('L_HS').innerText = Locales[lang].HS;
         }
 
-        // SCROLL SENSOR FOR BACKGROUND ENGINE
+        /* LINE 680: VIEWPORT TRACKER 
+        */
         const sections = document.querySelectorAll('section');
         const layers = document.querySelectorAll('.bg-layer');
 
-        const bgObserver = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Reset all layers
-                    layers.forEach(l => l.classList.remove('active'));
-                    // Activate corresponding layer
-                    const activeLayer = document.getElementById('bg-' + entry.target.id);
-                    if (activeLayer) activeLayer.classList.add('active');
+                    const id = entry.target.id;
+                    layers.forEach(layer => {
+                        layer.classList.remove('active');
+                        if (layer.id === 'bg-' + id) {
+                            layer.classList.add('active');
+                        }
+                    });
                 }
             });
-        }, { threshold: 0.35 });
+        }, { threshold: 0.45 });
 
-        sections.forEach(s => bgObserver.observe(s));
+        sections.forEach(s => observer.observe(s));
     </script>
 </body>
 </html>
