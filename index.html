@@ -1,850 +1,973 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>MR LIVING CAPITAL | Investment & Capital Advisor</title>
-    
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MR Living Capital | Dubai Real Estate Investment Advisor</title>
+  <meta name="description" content="MR Living Capital — Dubai real estate investment advisory. 20 years in financial services. Tailored investment strategy for serious investors. No pitch, no bias." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;600&display=swap" rel="stylesheet">
+  <!-- GA4 placeholder -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
 
-    <style>
-/* LANDMARK GRID STYLING */
-.landmark-transition-container { padding: 120px 8%; background: var(--uae-black); }
-.landmark-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-.landmark-card { text-align: center; }
-.landmark-card img { 
-    width: 100%; aspect-ratio: 4/5; object-fit: cover; 
-    filter: grayscale(100%); transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
-    border: 1px solid rgba(230, 170, 32, 0.2);
-}
-.landmark-card:hover img { 
-    filter: grayscale(0%); transform: translateY(-10px); 
-    border-color: var(--gold-accent); 
-}
-.landmark-card p { 
-    color: var(--gold-accent); margin-top: 15px; 
-    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; 
-}
+  <!-- Meta Pixel placeholder -->
+  <!-- <script>!function(f,b,e,v,n,t,s){...}</script> -->
 
-/* Tablet & Mobile Grid Logic */
-@media (max-width: 1100px) { .landmark-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 768px) { .landmark-grid { grid-template-columns: 1fr; } }
-        /* SECTION: GLOBAL VARIABLES & UAE FLAG COLOR PALETTE
-        ------------------------------------------------------------
-        */
-        :root {
-            /* UAE FLAG COLORS */
-            --uae-red: #CE1126;
-            --uae-green: #007A33;
-            --uae-white: #FFFFFF;
-            --uae-black: #000000;
-            
-            /* LUXURY & ACCENT COLORS */
-            --gold-accent: #E6AA20;
-            --grey-light: #F8F9FA;
-            --grey-border: #EEEEEE;
-            
-            /* TRANSITION & ANIMATION CURVES */
-            --transition-slow: opacity 2.5s ease-in-out;
-            --transition-standard: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            
-            /* GLASSMORPHISM EFFECTS */
-            --glass-bg: rgba(10, 10, 10, 0.98);
-            --glass-blur: blur(30px);
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-        /* SECTION: GLOBAL RESET
-        ------------------------------------------------------------
-        */
-        html {
-            scroll-behavior: smooth;
-        }
+  <style>
+    :root {
+      --abyss:         #0E2828;
+      --persian-tile:  #1A4040;
+      --slate-charcoal:#2C3535;
+      --isfahan-teal:  #7BBFB5;
+      --shiraz-rose:   #C4977A;
+      --cloud-dancer:  #F4F0E8;
+      --card-bg:       #152E2E;
+      --input-bg:      #0B2020;
+      --border-subtle: rgba(123,191,181,0.15);
+      --border-warm:   rgba(196,151,122,0.3);
+      --transition:    all 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-        body {
-            background-color: var(--uae-black);
-            color: var(--uae-white);
-            font-family: 'DM Sans', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.85;
-            font-size: 16px;
-        }
+    body {
+      background-color: var(--abyss);
+      color: var(--cloud-dancer);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body.rtl {
+      direction: rtl;
+      font-family: 'Noto Sans Arabic', 'DM Sans', sans-serif;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
 
-        /* SECTION: RTL (RIGHT-TO-LEFT) LOGIC
-        ------------------------------------------------------------
-        */
-        body.rtl {
-            direction: rtl;
-            font-family: 'Noto Sans Arabic', sans-serif;
-        }
+    /* BACKGROUND */
+    .bg-container { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-2; }
+    .bg-layer {
+      position: absolute; top:0; left:0; width:100%; height:100%;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 2.5s ease-in-out;
+    }
+    .bg-layer.active { opacity: 1; }
+    .bg-overlay {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: linear-gradient(135deg, rgba(14,40,40,0.88) 0%, rgba(10,30,30,0.82) 100%);
+      z-index:-1;
+    }
 
-        body.rtl .hero-sub {
-            border-left: none;
-            border-right: 10px solid var(--uae-red);
-            padding-left: 0;
-            padding-right: 45px;
-        }
 
-        body.rtl .reasons-sidebar {
-            border-right: none;
-            border-left: 10px solid var(--gold-accent);
-        }
+    /* STICKY SIDEBAR */
+    .social-sidebar {
+      position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+      z-index: 998; display: flex; flex-direction: column; gap: 6px;
+      padding: 14px 10px;
+      background: rgba(14,40,40,0.9);
+      border-radius: 10px 0 0 10px;
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle); border-right: none;
+    }
+    .sidebar-icon {
+      width: 42px; height: 42px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition); position: relative;
+      background: rgba(123,191,181,0.06);
+    }
+    .sidebar-icon svg { width: 20px; height: 20px; fill: rgba(244,240,232,0.6); transition: fill 0.3s; }
+    .sidebar-icon:hover { background: var(--shiraz-rose); transform: scale(1.1); }
+    .sidebar-icon:hover svg { fill: var(--abyss); }
+    .sidebar-tooltip {
+      position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
+      background: var(--slate-charcoal); color: var(--cloud-dancer); font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      padding: 5px 10px; border-radius: 4px; white-space: nowrap;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+      border: 1px solid var(--border-subtle);
+    }
+    .sidebar-icon:hover .sidebar-tooltip { opacity: 1; }
+    @media (max-width: 768px) { .social-sidebar { display: none; } }
 
-        /* SECTION: CINEMATIC BACKGROUND ENGINE
-        ------------------------------------------------------------
-        */
-        .bg-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-color: var(--uae-black);
-        }
+    /* NAV */
+    .nav {
+      position: fixed; top:0; left:0; right:0; height: 88px;
+      background: rgba(14,40,40,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 1000; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 6%;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: 1.05rem; letter-spacing: 4px; color: var(--cloud-dancer);
+      text-transform: uppercase; white-space: nowrap;
+      position: relative; padding-bottom: 6px;
+    }
+    .nav-logo::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: var(--shiraz-rose); opacity: 0.6;
+    }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .lang-toggle { display: flex; align-items: center; gap: 4px; }
+    .lang-btn {
+      background: transparent; border: 1px solid rgba(123,191,181,0.3);
+      color: rgba(244,240,232,0.6); font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
+      padding: 6px 13px; border-radius: 3px; cursor: pointer;
+      transition: var(--transition);
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--isfahan-teal); color: var(--abyss);
+      border-color: var(--isfahan-teal);
+    }
+    .btn-book-nav {
+      background: var(--shiraz-rose); color: var(--abyss);
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 11px 22px; border-radius: 3px; border: none; cursor: pointer;
+      transition: var(--transition); white-space: nowrap; display: inline-block;
+    }
+    .btn-book-nav:hover {
+      background: #b8856a; transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(196,151,122,0.35);
+    }
 
-        .bg-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: var(--transition-slow);
-            filter: brightness(0.40) contrast(1.15);
-            transform: scale(1.05);
-        }
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 140px 8% 80px; position: relative;
+    }
+    .hero-content { max-width: 820px; }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--isfahan-teal);
+      margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block; width: 32px; height: 1px;
+      background: var(--isfahan-teal);
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-weight: 700; font-size: clamp(2.8rem,6vw,5.2rem);
+      line-height: 1.1; color: var(--cloud-dancer); margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .hero-h1 .text-rose { color: var(--shiraz-rose); }
+    .hero-h1 .text-teal { color: var(--isfahan-teal); }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif; font-size: clamp(1rem,1.6vw,1.18rem);
+      font-weight: 400; font-style: italic; color: var(--shiraz-rose);
+      letter-spacing: 1px; margin-bottom: 28px;
+      padding-bottom: 28px; border-bottom: 1px solid var(--border-warm);
+    }
+    .hero-sub {
+      font-size: clamp(1rem,1.6vw,1.12rem); color: rgba(244,240,232,0.75);
+      font-weight: 300; max-width: 620px; margin-bottom: 48px; line-height: 1.8;
+    }
+    .hero-ctas { display: flex; gap: 18px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--shiraz-rose); color: var(--abyss);
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 17px 36px; border-radius: 3px; border: 2px solid var(--shiraz-rose);
+      cursor: pointer; transition: var(--transition); display: inline-block;
+    }
+    .btn-primary:hover {
+      background: #b8856a; border-color: #b8856a;
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,151,122,0.4);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--isfahan-teal);
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 17px 36px; border-radius: 3px; border: 2px solid rgba(123,191,181,0.5);
+      cursor: pointer; transition: var(--transition); display: inline-block;
+    }
+    .btn-secondary:hover {
+      background: rgba(123,191,181,0.1); border-color: var(--isfahan-teal);
+      transform: translateY(-2px);
+    }
 
-        .bg-layer.active {
-            opacity: 1;
-            z-index: 1;
-            transform: scale(1);
-        }
+    /* TRUST STRIP */
+    .trust-strip {
+      background: var(--persian-tile);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 44px 8%; position: relative; z-index: 2;
+    }
+    .trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .trust-item { text-align: center; padding: 16px 24px; position: relative; }
+    .trust-item:not(:last-child)::after {
+      content: ''; position: absolute; right: 0; top: 10%; height: 80%;
+      width: 1px; background: var(--shiraz-rose); opacity: 0.3;
+    }
+    .trust-number {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 2rem; font-weight: 700; color: var(--shiraz-rose);
+      line-height: 1.1; margin-bottom: 7px;
+    }
+    .trust-label {
+      font-size: 0.72rem; color: rgba(244,240,232,0.55);
+      letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+    }
 
-        /* SECTION: NAVIGATION INTERFACE
-        ------------------------------------------------------------
-        */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 110px;
-            z-index: 9999;
-            background-color: var(--uae-white);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            border-bottom: 7px solid var(--uae-red);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-        }
+    /* SECTION COMMON */
+    .section-label {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--isfahan-teal);
+      margin-bottom: 18px; padding-bottom: 8px;
+      border-bottom: 1px solid rgba(123,191,181,0.3);
+    }
 
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            color: var(--uae-black);
-            font-size: 1.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: -1.2px;
-        }
+    /* ABOUT */
+    #about { padding: 120px 8%; background: rgba(14,40,40,0.95); position: relative; z-index: 2; }
+    .about-grid {
+      display: grid; grid-template-columns: 300px 1fr;
+      gap: 80px; align-items: start; max-width: 1100px; margin: 0 auto;
+    }
+    .about-photo-wrap { display: flex; flex-direction: column; align-items: center; }
+    .about-photo {
+      width: 280px !important; height: 280px !important; min-width: 280px;
+      border-radius: 50%; object-fit: cover; object-position: center top;
+      border: 3px solid var(--shiraz-rose);
+      box-shadow: 0 0 0 8px rgba(196,151,122,0.1), 0 20px 60px rgba(0,0,0,0.4);
+      display: block;
+    }
+    .about-name {
+      margin-top: 20px; font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--shiraz-rose);
+      letter-spacing: 2px; text-transform: uppercase; text-align: center;
+    }
+    .about-title {
+      font-size: 0.72rem; color: rgba(244,240,232,0.5); letter-spacing: 2px;
+      text-transform: uppercase; text-align: center; margin-top: 6px;
+    }
+    .about-text h2 {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700;
+      color: var(--cloud-dancer); margin-bottom: 28px;
+    }
+    .about-text p {
+      color: rgba(244,240,232,0.78); font-size: 1.02rem;
+      line-height: 1.85; margin-bottom: 20px;
+    }
 
-        .lang-control {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    /* WHY */
+    #why { padding: 100px 8%; background: var(--slate-charcoal); position: relative; z-index: 2; }
+    #why .section-header { text-align: center; margin-bottom: 60px; }
+    #why h2 {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 700;
+      color: var(--cloud-dancer); margin-top: 12px;
+    }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 24px; max-width: 1000px; margin: 0 auto;
+    }
+    .why-card {
+      background: var(--persian-tile); border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--shiraz-rose);
+      padding: 36px 32px; border-radius: 6px;
+      transition: var(--transition);
+    }
+    .why-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      border-color: rgba(196,151,122,0.5);
+    }
+    body.rtl .why-card {
+      border-left: 1px solid var(--border-subtle);
+      border-right: 3px solid var(--shiraz-rose);
+    }
+    .why-icon { font-size: 1.6rem; margin-bottom: 16px; color: var(--isfahan-teal); }
+    .why-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem;
+      font-weight: 700; color: var(--cloud-dancer); margin-bottom: 12px; line-height: 1.3;
+    }
+    .why-card p { font-size: 0.95rem; color: rgba(244,240,232,0.65); line-height: 1.75; }
 
-        .lang-btn {
-            background-color: transparent;
-            border: 2.5px solid var(--grey-border);
-            padding: 12px 24px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--uae-black);
-            transition: var(--transition-standard);
-            text-transform: uppercase;
-        }
+    /* LEAD CAPTURE */
+    #lead-capture {
+      padding: 120px 8%;
+      background: linear-gradient(180deg, var(--persian-tile) 0%, var(--abyss) 100%);
+      position: relative; z-index: 2;
+    }
+    .lead-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .lead-inner h2 {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 700;
+      color: var(--cloud-dancer); margin-bottom: 18px;
+    }
+    .lead-inner .subtext {
+      color: rgba(244,240,232,0.68); font-size: 1.02rem;
+      margin-bottom: 44px; line-height: 1.8;
+    }
+    .lead-form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .form-input {
+      background: var(--input-bg); border: 1px solid var(--border-subtle);
+      color: var(--cloud-dancer); font-family: 'DM Sans', sans-serif;
+      font-size: 0.98rem; padding: 16px 20px; border-radius: 4px;
+      width: 100%; outline: none; transition: var(--transition);
+    }
+    .form-input:focus {
+      border-color: var(--isfahan-teal);
+      box-shadow: 0 0 0 3px rgba(123,191,181,0.1);
+    }
+    .form-input::placeholder { color: rgba(244,240,232,0.3); }
+    select.form-input option { background: var(--slate-charcoal); color: var(--cloud-dancer); }
+    .btn-form {
+      background: var(--shiraz-rose); color: var(--abyss);
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 17px 36px; border-radius: 3px; border: none; cursor: pointer;
+      transition: var(--transition); width: 100%; margin-top: 6px;
+    }
+    .btn-form:hover {
+      background: #b8856a; transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(196,151,122,0.35);
+    }
+    .form-thanks {
+      display: none; background: rgba(123,191,181,0.08);
+      border: 1px solid rgba(123,191,181,0.3); color: var(--cloud-dancer);
+      padding: 24px; border-radius: 4px; font-size: 0.98rem;
+      line-height: 1.65; text-align: center; margin-top: 16px;
+    }
+    .form-thanks.visible { display: block; }
 
-        .lang-btn:hover {
-            border-color: var(--uae-red);
-        }
+    /* OPPORTUNITIES */
+    #opportunities { padding: 120px 8%; background: var(--abyss); position: relative; z-index: 2; }
+    #opportunities .section-header { text-align: center; margin-bottom: 60px; }
+    #opportunities h2 {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 700;
+      color: var(--cloud-dancer); margin-bottom: 14px;
+    }
+    #opportunities .section-sub { color: rgba(244,240,232,0.55); font-size: 1rem; }
+    .opp-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .opp-card {
+      background: var(--card-bg); border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--isfahan-teal);
+      padding: 36px 28px; border-radius: 6px;
+      transition: var(--transition); display: flex; flex-direction: column; gap: 14px;
+    }
+    .opp-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border-color: rgba(123,191,181,0.4);
+    }
+    .opp-location {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--isfahan-teal);
+    }
+    .opp-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem;
+      font-weight: 700; color: var(--cloud-dancer); line-height: 1.2;
+    }
+    .opp-card p {
+      font-size: 0.93rem; color: rgba(244,240,232,0.62);
+      line-height: 1.75; flex: 1;
+    }
+    .btn-enquire {
+      display: inline-block; background: transparent; color: var(--shiraz-rose);
+      border: 1px solid rgba(196,151,122,0.4);
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 11px 22px; border-radius: 3px; cursor: pointer;
+      transition: var(--transition); align-self: flex-start;
+    }
+    .btn-enquire:hover {
+      background: var(--shiraz-rose); color: var(--abyss);
+      border-color: var(--shiraz-rose); transform: translateY(-1px);
+    }
 
-        .lang-btn.active {
-            background-color: var(--uae-black);
-            color: var(--uae-white);
-            border-color: var(--uae-black);
-        }
+    /* BOOK A CALL */
+    #book {
+      padding: 120px 8%; text-align: center; position: relative; z-index: 2;
+      background: var(--persian-tile);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    #book .section-label { display: block; margin-bottom: 18px; }
+    #book h2 {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 700;
+      color: var(--cloud-dancer); margin-bottom: 18px;
+      max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+    #book .subtext {
+      color: rgba(244,240,232,0.68); font-size: 1rem;
+      max-width: 600px; margin: 0 auto 44px; line-height: 1.8;
+    }
+    .btn-call-big {
+      display: inline-block; background: var(--shiraz-rose); color: var(--abyss);
+      font-family: 'DM Sans', sans-serif; font-size: 1rem;
+      font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 22px 52px; border-radius: 3px; border: none; cursor: pointer;
+      transition: var(--transition); margin-bottom: 24px;
+    }
+    .btn-call-big:hover {
+      background: #b8856a; transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(196,151,122,0.4);
+    }
+    .call-note {
+      color: rgba(244,240,232,0.38); font-size: 0.85rem;
+      max-width: 480px; margin: 0 auto; line-height: 1.65;
+    }
 
-        /* SECTION: PAGE LAYOUT & TYPOGRAPHY
-        ------------------------------------------------------------
-        */
-        section {
-            min-height: 100vh;
-            padding-top: 240px;
-            padding-bottom: 160px;
-            padding-left: 10%;
-            padding-right: 10%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            z-index: 10;
-        }
+    /* CONTACT */
+    #contact { padding: 120px 8%; background: var(--abyss); position: relative; z-index: 2; }
+    .contact-inner { max-width: 760px; margin: 0 auto; }
+    .contact-inner h2 {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 700;
+      color: var(--cloud-dancer); margin-bottom: 10px;
+    }
+    .contact-inner .subtext {
+      color: rgba(244,240,232,0.6); font-size: 0.98rem;
+      margin-bottom: 44px; line-height: 1.75;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .contact-note {
+      color: rgba(244,240,232,0.32); font-size: 0.8rem;
+      text-align: center; margin-top: 12px; letter-spacing: 0.5px;
+    }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 5.2rem;
-            line-height: 1.05;
-            margin-bottom: 50px;
-            font-style: italic;
-            font-weight: 700;
-        }
+    /* FOOTER */
+    footer {
+      background: var(--abyss);
+      border-top: 2px solid var(--shiraz-rose);
+      padding: 60px 8% 36px; position: relative; z-index: 2;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px; align-items: start; margin-bottom: 48px;
+    }
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: 1.1rem; letter-spacing: 2px; color: var(--cloud-dancer);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .footer-brand p {
+      color: var(--shiraz-rose); font-size: 0.88rem;
+      font-family: 'Playfair Display', serif; font-style: italic;
+      letter-spacing: 1px;
+    }
+    .footer-social {
+      display: flex; gap: 14px; justify-content: center;
+      align-items: center; flex-wrap: wrap;
+    }
+    .social-icon {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(123,191,181,0.06); border: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .social-icon:hover { background: var(--shiraz-rose); border-color: var(--shiraz-rose); }
+    .social-icon svg { width: 18px; height: 18px; fill: rgba(244,240,232,0.7); }
+    .social-icon:hover svg { fill: var(--abyss); }
+    .footer-contact {
+      text-align: right; display: flex; flex-direction: column; gap: 10px;
+    }
+    .footer-contact a, .footer-contact span {
+      color: rgba(244,240,232,0.55); font-size: 0.88rem;
+      display: block; transition: color 0.3s;
+    }
+    .footer-contact a:hover { color: var(--shiraz-rose); }
+    .footer-bottom {
+      text-align: center; border-top: 1px solid rgba(244,240,232,0.06);
+      padding-top: 28px; color: rgba(244,240,232,0.25);
+      font-size: 0.8rem; letter-spacing: 0.5px;
+    }
 
-        .hero-sub {
-            font-size: 1.7rem;
-            max-width: 900px;
-            border-left: 12px solid var(--uae-red);
-            padding-left: 45px;
-            margin-bottom: 75px;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.95);
-        }
+    /* RTL */
+    body.rtl .about-grid { direction: rtl; }
+    body.rtl .footer-contact { text-align: left; }
+    body.rtl .nav { direction: rtl; }
+    body.rtl .hero-content { direction: rtl; }
+    body.rtl .hero-eyebrow::before { display: none; }
+    body.rtl .hero-eyebrow::after {
+      content: ''; display: inline-block; width: 32px; height: 1px;
+      background: var(--isfahan-teal);
+    }
+    body.rtl .lead-form, body.rtl .contact-form { direction: rtl; }
+    body.rtl .why-card { border-left: 1px solid var(--border-subtle); border-right: 3px solid var(--shiraz-rose); }
+    body.rtl .social-sidebar { right: auto; left: 0; border-radius: 0 10px 10px 0; border-left: none; border-right: 1px solid var(--border-subtle); }
+    body.rtl .sidebar-tooltip { right: auto; left: 52px; }
 
-        /* SECTION: ABOUT ME COMPONENT (ROUND PHOTO)
-        ------------------------------------------------------------
-        */
-        .about-flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 100px;
-            align-items: flex-start;
-            justify-content: space-between;
-        }
+    /* 768px */
+    @media (max-width: 768px) {
+      .nav { padding: 0 5%; height: 78px; }
+      .nav-logo { font-size: 0.95rem; }
+      .btn-book-nav { padding: 10px 14px; font-size: 0.7rem; }
+      .lang-btn { padding: 5px 10px; font-size: 0.68rem; }
+      #hero { padding: 120px 6% 70px; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .trust-grid { grid-template-columns: repeat(2,1fr); }
+      .trust-item:nth-child(2)::after { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-wrap { align-items: center; }
+      .about-photo { width: 200px !important; height: 200px !important; }
+      .why-grid { grid-template-columns: 1fr; }
+      .opp-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-contact { text-align: center; }
+    }
 
-        .about-biography {
-            flex: 1;
-            min-width: 450px;
-        }
-
-        .biography-content {
-            margin-bottom: 40px;
-        }
-
-        .biography-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 30px;
-        }
-
-        .biography-content p {
-            font-size: 1.35rem;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* THE PHOTO COMPONENT */
-        .portrait-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 50px;
-        }
-
-        .round-photo-frame {
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            border: 6px solid var(--gold-accent);
-            overflow: hidden;
-            background-color: #111;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
-            margin-bottom: 20px;
-        }
-
-        .round-photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* SECTION: THE 5 REASONS SIDEBAR
-        ------------------------------------------------------------
-        */
-        .reasons-sidebar {
-            flex: 0 0 550px;
-            background-color: var(--glass-bg);
-            padding: 70px;
-            border-right: 12px solid var(--gold-accent);
-            backdrop-filter: var(--glass-blur);
-            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
-        }
-
-        .reasons-sidebar h3 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: var(--uae-white);
-            margin-bottom: 60px;
-            opacity: 0.7;
-        }
-
-        .reason-node {
-            margin-bottom: 45px;
-        }
-
-        .reason-node strong {
-            display: block;
-            color: var(--gold-accent);
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .reason-node p {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* SECTION: STRATEGIC SELECTION (PORTFOLIO)
-        ------------------------------------------------------------
-        */
-        .portfolio-header {
-            text-align: center;
-            margin-bottom: 90px;
-        }
-
-        .portfolio-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            margin-bottom: 20px;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 60px;
-        }
-
-        .project-card {
-            background-color: var(--glass-bg);
-            padding: 90px 60px;
-            border-top: 15px solid var(--uae-red);
-            transition: var(--transition-standard);
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-25px);
-            border-top-color: var(--gold-accent);
-        }
-
-        .project-meta {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--gold-accent);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 35px;
-            display: block;
-        }
-
-        .project-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 25px;
-        }
-
-        .project-card p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        /* SECTION: FORMSPREE MASTER FORM
-        ------------------------------------------------------------
-        */
-        .form-master-wrapper {
-            background-color: var(--uae-white);
-            color: var(--uae-black);
-            padding: 120px 10%;
-            max-width: 1400px;
-            margin: 0 auto;
-            border-radius: 4px;
-            box-shadow: 0 80px 150px rgba(0,0,0,0.9);
-        }
-
-        .form-heading {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .form-heading h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .form-grid-architecture {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .full-span {
-            grid-column: span 2;
-        }
-
-        .form-field-group {
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        .form-field-group label {
-            display: block;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            color: #777777;
-            margin-bottom: 15px;
-        }
-
-        .form-field-group input,
-        .form-field-group select {
-            width: 100%;
-            padding: 26px;
-            background-color: #FBFBFB;
-            border: 2px solid #F0F0F0;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1.2rem;
-            color: var(--uae-black);
-            transition: var(--transition-standard);
-        }
-
-        .form-field-group input:focus,
-        .form-field-group select:focus {
-            background-color: #FFFFFF;
-            border-color: var(--uae-red);
-        }
-
-        .submit-button {
-            width: 100%;
-            background-color: var(--uae-black);
-            color: var(--uae-white);
-            padding: 40px;
-            border: none;
-            font-weight: 700;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            cursor: pointer;
-            margin-top: 70px;
-            transition: var(--transition-standard);
-        }
-
-        .submit-button:hover {
-            background-color: var(--uae-red);
-            letter-spacing: 12px;
-        }
-
-        /* SECTION: STICKY SOCIAL INTERFACE
-        ------------------------------------------------------------
-        */
-        .sticky-social-bar {
-            position: fixed;
-            bottom: 70px;
-            right: 70px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .social-trigger {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-            transition: var(--transition-bounce);
-            text-decoration: none;
-        }
-
-        .social-trigger svg {
-            width: 38px;
-            fill: var(--uae-white);
-        }
-
-        .social-trigger:hover {
-            transform: scale(1.3) translateY(-15px) rotate(8deg);
-        }
-
-        /* SOCIAL COLORS */
-        .bg-wa { background-color: #25D366; }
-        .bg-tg { background-color: #229ED9; }
-        .bg-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-
-        /* SECTION: RESPONSIVE OVERRIDES (MOBILE & TABLET)
-        ------------------------------------------------------------
-        */
-        @media (max-width: 1200px) {
-            h1 { font-size: 4rem; }
-            .about-flex-container { flex-direction: column; }
-            .about-biography, .reasons-sidebar { flex: 1 1 100%; min-width: 100%; }
-            .form-grid-architecture { grid-template-columns: 1fr; }
-            .full-span { grid-column: span 1; }
-            section { padding-top: 180px; padding-bottom: 120px; }
-            .sticky-social-bar { right: 30px; bottom: 30px; }
-            .social-trigger { width: 65px; height: 65px; }
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .hero-sub { font-size: 1.25rem; padding-left: 25px; }
-            nav { height: 90px; }
-            .nav-logo { font-size: 1.4rem; }
-            .round-photo-frame { width: 260px; height: 260px; }
-        }
-    </style>
+    /* 480px */
+    @media (max-width: 480px) {
+      .nav-logo { font-size: 0.82rem; letter-spacing: 1.5px; }
+      .hero-h1 { font-size: 2.2rem; }
+      #about, #why, #lead-capture, #opportunities, #book, #contact { padding: 80px 6%; }
+      .trust-strip { padding: 30px 6%; }
+      .trust-number { font-size: 1.65rem; }
+      .btn-primary, .btn-secondary { padding: 15px 24px; font-size: 0.82rem; }
+      .btn-call-big { padding: 18px 32px; font-size: 0.88rem; }
+    }
+  </style>
 </head>
-<body class="ltr">
+<body>
 
-    <div class="bg-container">
-        <div class="bg-layer active" id="bg-section-hero" style="background-image: url('https://images.unsplash.com/photo-1651467606797-e1c660cf3fda?q=80&w=2400></div>
-        
-        <div class="bg-layer" id="bg-section-about" style="background-image: url('https://images.unsplash.com/photo-1614101614278-f68285ba0f0c?q=80&w=2400');"></div>
-        
-        <div class="bg-layer" id="bg-section-projects" style="background-image: url('https://images.unsplash.com/photo-1679682598283-a1b88b136ed8?q=80&w=2400');"></div>
-        
-<div class="bg-layer" id="bg-section-landmarks" style="background-image: url('https://images.unsplash.com/photo-1535209252068-f498eac4aaa3?q=80&w=2400');"></div>
-        
-        <div class="bg-layer" id="bg-section-contact" style="background-image: url('https://images.unsplash.com/photo-1633981871770-214950461624?q=80&w=2400');"></div>
+  <div class="bg-container" id="bgContainer">
+    <div class="bg-layer active" style="background-image: url('https://images.unsplash.com/photo-1614101614278-f68285ba0f0c?q=80&w=2400');"></div>
+    <div class="bg-layer" style="background-image: url('https://images.unsplash.com/photo-1633981871770-214950461624?q=80&w=2400');"></div>
+    <div class="bg-layer" style="background-image: url('https://images.unsplash.com/photo-1535209252068-f498eac4aaa3?q=80&w=2400');"></div>
+    <div class="bg-layer" style="background-image: url('https://images.unsplash.com/photo-1679682598283-a1b88b136ed8?q=80&w=2400');"></div>
+  </div>
+  <div class="bg-overlay"></div>
+
+  <!-- Sticky Social Sidebar -->
+  <div class="social-sidebar">
+    <a href="https://wa.me/971585899112" target="_blank" rel="noopener" class="sidebar-icon" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span class="sidebar-tooltip">WhatsApp</span>
+    </a>
+    <a href="https://instagram.com/mrlivingcapital" target="_blank" rel="noopener" class="sidebar-icon" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      <span class="sidebar-tooltip">Instagram</span>
+    </a>
+    <a href="https://t.me/mrlivingcapital" target="_blank" rel="noopener" class="sidebar-icon" aria-label="Telegram">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      <span class="sidebar-tooltip">Telegram</span>
+    </a>
+  </div>
+
+
+  <nav class="nav">
+    <a href="#hero" class="nav-logo">MR Living Capital</a>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnEn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btnAr" onclick="setLang('ar')">AR</button>
+        <button class="lang-btn" id="btnFa" onclick="setLang('fa')">FA</button>
+      </div>
+      <a href="https://calendly.com/masoud-rahemi/investment-clarity-call" target="_blank" rel="noopener" class="btn-book-nav"
+         data-en="Book a Call" data-ar="احجز مكالمة" data-fa="رزرو تماس">Book a Call</a>
     </div>
+  </nav>
 
-    <header>
-        <a href="#section-hero" class="nav-logo">MR LIVING CAPITAL</a>
-        <div class="lang-control">
-            <button class="lang-btn active" id="btn-en" onclick="changeLanguage('en', this)">EN</button>
-            <button class="lang-btn" id="btn-ar" onclick="changeLanguage('ar', this)">AR</button>
-            <button class="lang-btn" id="btn-fa" onclick="changeLanguage('fa', this)">FA</button>
-        </div>
-    </header>
-
-    <section id="section-hero">
-        <div class="content-animate">
-            <h1 id="TEXT_H1">Invest with <span style="color:var(--uae-red);">Authority</span>.<br>Exit with <span style="color:var(--gold-accent);">Wealth</span>.</h1>
-            <p class="hero-sub" id="TEXT_HS">I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term capital growth.</p>
-            
-            <div style="display:flex; gap:20px;">
-                <a href="#section-contact" class="submit-button" style="text-decoration:none; width:fit-content; padding:25px 60px; font-size:1.1rem; margin-top:0;">Book Discovery Session</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="section-about">
-        <div class="about-flex-container">
-            
-            <div class="about-biography">
-                <div class="portrait-wrapper">
-                    <div class="round-photo-frame">
-                        <img src="MRLC.jpeg" alt="MR LIVING CAPITAL Advisor Portrait">
-                    </div>
-                </div>
-                
-                <div class="biography-content">
-                    <h2 id="TEXT_ABOUT_TITLE">About Me</h2>
-                    <p id="TEXT_ABOUT_P1">I am your personal advisor in the Dubai real estate landscape. I believe in total transparency and a banking-level approach to asset selection.</p>
-                    <p id="TEXT_ABOUT_P2">My goal is to protect your interests above all else, ensuring that your property acquisition is a strategic financial move, not just a transaction.</p>
-                </div>
-            </div>
-
-            <div class="reasons-sidebar">
-                <h3 id="TEXT_REASONS_TITLE">Why Work With Me?</h3>
-                
-                <div class="reason-node">
-                    <strong id="REASON_1_T">1. Independence</strong>
-                    <p id="REASON_1_P">I am not tied to any single developer; my loyalty is exclusively to your portfolio and your returns.</p>
-                </div>
-
-                <div class="reason-node">
-                    <strong id="REASON_2_T">2. Data-First Approach</strong>
-                    <p id="REASON_2_P">Every recommendation is backed by real-time DLD transaction data, historical trends, and supply metrics.</p>
-                </div>
-
-                <div class="reason-node">
-                    <strong id="REASON_3_T">3. End-to-End Support</strong>
-                    <p id="REASON_3_P">From initial selection to legal handover and property management, I manage every complexity for you.</p>
-                </div>
-
-                <div class="reason-node">
-                    <strong id="REASON_4_T">4. Total Transparency</strong>
-                    <p id="REASON_4_P">I speak the truth about developer health and project delays. No marketing hype, just actionable facts.</p>
-                </div>
-
-                <div class="reason-node">
-                    <strong id="REASON_5_T">5. Market Access</strong>
-                    <p id="REASON_5_P">I provide my private clients with early access to off-market distressed deals and exclusive pre-launch inventory.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="section-projects">
-        <div class="portfolio-header">
-            <h2 id="TEXT_PORTFOLIO_TITLE">Strategic Opportunities</h2>
-            <p style="font-size:1.3rem; opacity:0.6;" id="TEXT_PORTFOLIO_SUB">Hand-picked assets for capital preservation and appreciation.</p>
-        </div>
-
-        <div class="portfolio-grid">
-            
-            <div class="project-card">
-                <span class="project-meta">Dubailand Corridor</span>
-                <h3>Tilal Binghatti</h3>
-                <p>Premium villa assets designed for high-yield residential demand and steady capital growth.</p>
-            </div>
-
-            <div class="project-card" style="border-top-color: var(--uae-green);">
-                <span class="project-meta" style="color:var(--uae-green);">Abu Dhabi</span>
-                <h3>Sobha City</h3>
-                <p>Setting the gold standard of construction quality and finishings in the capital's newest urban center.</p>
-            </div>
-
-            <div class="project-card" style="border-top-color: var(--gold-accent);">
-                <span class="project-meta">Marjan Island, RAK</span>
-                <h3>Mondrian Residences</h3>
-                <p>Strategically positioned waterfront assets next to the future of the region's leisure district and Wynn.</p>
-            </div>
-
-        </div>
-    </section>
-
-<section id="section-landmarks" class="landmark-transition-container">
-    <div class="landmark-content">
-        <h2 style="font-family:'Playfair Display'; font-size:4.5rem; text-align:center; margin-bottom:80px;">UAE Strategic Landscapes</h2>
-        <div class="landmark-grid">
-            <div class="landmark-card">
-                <img src="https://images.unsplash.com/photo-1651467606797-e1c660cf3fda?q=80&w=800" alt="Burj Khalifa">
-                <p>Burj Khalifa</p>
-            </div>
-            <div class="landmark-card">
-                <img src="'https://images.unsplash.com/photo-1614101614278-f68285ba0f0c?q=80&w=800" alt="Sheikh Zayed Grand Mosque">
-                <p>Sheikh Zayed Mosque</p>
-            </div>
-            <div class="landmark-card">
-                <img src="https://images.unsplash.com/photo-1679682598283-a1b88b136ed8?q=80&w=800" alt="Palm Jumeirah">
-                <p>Palm Jumeirah</p>
-            </div>
-            <div class="landmark-card">
-                <img src="https://images.unsplash.com/photo-1535209252068-f498eac4aaa3?q=80&w=800" alt="Louvre Abu Dhabi">
-                <p>Louvre Abu Dhabi</p>
-            </div>
-            <div class="landmark-card">
-                <img src="https://images.unsplash.com/photo-1633981871770-214950461624?q=80&w=800" alt="Jebel Jais">
-                <p>Jebel Jais</p>
-            </div>
-        </div>
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow"
+         data-en="Dubai Real Estate Investment Advisory"
+         data-ar="استشارات الاستثمار العقاري في دبي"
+         data-fa="مشاوره تخصصی سرمایه‌گذاری در املاک دبی">Dubai Real Estate Investment Advisory</p>
+      <h1 class="hero-h1"
+          data-en='Living <span class="text-rose">Proof</span>.<br>Lasting <span class="text-teal">Legacy</span>.'
+          data-ar='دليل <span class="text-rose">حيّ</span>.<br>إرث <span class="text-teal">خالد</span>.'
+          data-fa='سند <span class="text-rose">زنده</span>.<br>میراث <span class="text-teal">ماندگار</span>.'>
+        Living <span class="text-rose">Proof</span>.<br>Lasting <span class="text-teal">Legacy</span>.
+      </h1>
+      <p class="hero-tagline"
+         data-en="The numbers make sense — or we don't proceed."
+         data-ar="الأرقام تُثبت جدواها — أو لا نُكمل."
+         data-fa="اعداد باید حرف بزنند — وگرنه پیش نمی‌رویم.">The numbers make sense — or we don't proceed.</p>
+      <p class="hero-sub"
+         data-en="Independent real estate investment advisory for serious investors navigating the Dubai market. Backed by two decades in strategic financial management and a private portfolio spanning three countries."
+         data-ar="استشارات عقارية مستقلة للمستثمرين الجادين في سوق دبي. مدعومة بعقدين من الخبرة في الإدارة المالية الاستراتيجية، ومحفظة استثمارية خاصة في ثلاث دول."
+         data-fa="مشاوره مستقل سرمایه‌گذاری در بازار ملک دبی، برای سرمایه‌گذارانی که دنبال جواب درست هستند. با بیست سال تجربه در مدیریت مالی استراتژیک و یک سبد خصوصی در سه کشور.">
+        Independent real estate investment advisory for serious investors navigating the Dubai market. Backed by two decades in strategic financial management and a private portfolio spanning three countries.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://calendly.com/masoud-rahemi/investment-clarity-call" target="_blank" rel="noopener" class="btn-primary"
+           data-en="Book Investment Call →" data-ar="احجز مكالمة استثمارية ←" data-fa="رزرو تماس سرمایه‌گذاری ←">Book Investment Call →</a>
+        <a href="#lead-capture" class="btn-secondary"
+           data-en="Get Market Brief ↓" data-ar="احصل على تقرير السوق ↓" data-fa="دریافت گزارش بازار ↓">Get Market Brief ↓</a>
+      </div>
     </div>
-</section>
-    <section id="section-contact">
-        <div class="form-master-wrapper">
-            <div class="form-heading">
-                <h2 id="TEXT_FORM_TITLE">Private Inquiry</h2>
-                <p id="TEXT_FORM_SUB">Enter your investment objectives for a tailored market briefing.</p>
-            </div>
+  </section>
 
-            <form action="https://formspree.io/f/mqewqkvo" method="POST">
-                <div class="form-grid-architecture">
-                    
-                    <div class="form-field-group">
-                        <label>Full Name</label>
-                        <input type="text" name="client_name" required placeholder="Ex: John Doe">
-                    </div>
-
-                    <div class="form-field-group">
-                        <label>WhatsApp Number</label>
-                        <input type="tel" name="client_phone" required placeholder="+971 ...">
-                    </div>
-
-                    <div class="form-field-group">
-                        <label>Exact Investment (AED)</label>
-                        <input type="number" name="exact_budget" required placeholder="Amount">
-                    </div>
-
-                    <div class="form-field-group">
-                        <label>Budget Tier</label>
-                        <select name="budget_range" required>
-                            <option value="below_1.5m">Below 1.5M AED</option>
-                            <option value="1.5m_3m">1.5M - 3M AED</option>
-                            <option value="3m_5m">3M - 5M AED</option>
-                            <option value="5m_10m">5M - 10M AED</option>
-                            <option value="10m_plus">10M+ AED</option>
-                        </select>
-                    </div>
-
-                    <div class="form-field-group full-span">
-                        <label>Acquisition Timeline</label>
-                        <select name="purchase_timeline">
-                            <option value="immediately">Immediately</option>
-                            <option value="2_to_4_weeks">2 to 4 weeks</option>
-                            <option value="1_to_2_months">Within 2 Months</option>
-                            <option value="3_to_6_months">3 to 6 Months</option>
-                            <option value="6_months_plus">6 Months +</option>
-                            <option value="researching">Market Research Only</option>
-                        </select>
-                    </div>
-
-                    <div class="form-field-group full-span">
-                        <label>Primary Project Interest</label>
-                        <select name="project_interest" required>
-                            <option value="tilal_binghatti">Tilal Binghatti (Dubailand)</option>
-                            <option value="sobha_city">Sobha City (Abu Dhabi)</option>
-                            <option value="mondrian_residences">Mondrian Residences (RAK)</option>
-                            <option value="general_advisory">General Portfolio Strategy</option>
-                            <option value="distressed_deals">Off-Market Distressed Deals</option>
-                        </select>
-                    </div>
-
-                </div>
-                
-                <button type="submit" class="submit-button">Submit Briefing Request</button>
-            </form>
-        </div>
-    </section>
-
-    <div class="sticky-social-bar">
-        <a href="https://wa.me/971585899112" class="social-trigger bg-wa" target="_blank" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
-        
-        <a href="https://t.me/mrlivingcapital" class="social-trigger bg-tg" target="_blank" aria-label="Telegram">
-            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.184 16.51c-.183.18-.432.227-.643.14-.146-.06-.3-.133-.45-.224l-3.323-2.115-1.55 1.5c-.167.162-.43.2-.644.1-.11-.05-.22-.116-.32-.19l-.324-2.146-2.55-1.02c-.225-.09-.36-.312-.34-.543s.182-.423.4-.492l10.37-3.92c.2-.075.42-.045.6.08.18.12.27.33.24.54l-1.48 8.82z"/></svg>
-        </a>
-
-        <a href="https://instagram.com/mrlivingcapital" class="social-trigger bg-ig" target="_blank" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.245 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.063 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.245-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.063-2.633-.333-3.608-1.308-.975-.975-1.245-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.063-1.366.333-2.633 1.308-3.608.975-.975 2.242-1.245 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.337 2.617 6.78 6.979 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28-.073-1.689-.073-4.948s.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
+  <div class="trust-strip">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-number" data-en="35 Years" data-ar="٣٥ عاماً" data-fa="۳۵ سال">35 Years</div>
+        <div class="trust-label" data-en="In UAE" data-ar="في الإمارات" data-fa="در امارات">In UAE</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number" data-en="20 Years Career" data-ar="٢٠ عاماً" data-fa="۲۰ سال سابقه">20 Years Career</div>
+        <div class="trust-label" data-en="Strategy, Advisory &amp; Financial Services" data-ar="الاستراتيجية والاستشارة والخدمات المالية" data-fa="استراتژی، مشاوره و خدمات مالی">Strategy, Advisory &amp; Financial Services</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number" data-en="3 Countries" data-ar="٣ دول" data-fa="۳ کشور">3 Countries</div>
+        <div class="trust-label" data-en="Private Portfolio" data-ar="محفظة استثمارية خاصة" data-fa="پرتفولیوی خصوصی">Private Portfolio</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-number" data-en="No Bias" data-ar="بلا تحيّز" data-fa="بی‌طرف">No Bias</div>
+        <div class="trust-label" data-en="Commission-Free Advisory" data-ar="استشارة مستقلة بلا عمولة" data-fa="مشاوره بدون کمیسیون">Commission-Free Advisory</div>
+      </div>
     </div>
+  </div>
 
-    <script>
-        /* DATA OBJECT: Linguistic Dictionaries 
-        */
-        const Dictionary = {
-            en: {
-                H1: "Invest with <span style='color:var(--uae-red);'>Authority</span>.<br>Exit with <span style='color:var(--gold-accent);'>Wealth</span>.",
-                HS: "I provide independent real estate advisory, helping you navigate the Dubai market with data-driven insights and a focus on long-term capital growth.",
-                ABOUT_TITLE: "About Me",
-                ABOUT_P1: "I am your personal advisor in the Dubai real estate landscape. I believe in total transparency and a banking-level approach to asset selection.",
-                ABOUT_P2: "My goal is to protect your interests above all else, ensuring that your property acquisition is a strategic financial move, not just a transaction."
-            },
-            ar: {
-                H1: "استثمر <span style='color:var(--uae-red);'>بسلطة</span>.<br>واخرج <span style='color:var(--gold-accent);'>بثروة</span>.",
-                HS: "أقدم استشارات عقارية مستقلة لمساعدتك في سوق دبي من خلال رؤى مبنية على البيانات والتركيز على نمو رأس المال طويل الأجل.",
-                ABOUT_TITLE: "من أنا",
-                ABOUT_P1: "أنا مستشارك الشخصي في سوق العقارات في دبي. أؤمن بالشفافية المطلقة والنهج المصرفي في اختيار الأصول.",
-                ABOUT_P2: "هدفي هو حماية مصالحك فوق كل شيء، وضمان أن شراء عقارك هو خطوة مالية استراتيجية، وليس مجرد معاملة."
-            },
-            fa: {
-                H1: "با <span style='color:var(--uae-red);'>اقتدار</span> سرمایه‌گذاری کنید.<br>با <span style='color:var(--gold-accent);'>ثروت</span> خارج شوید.",
-                HS: "من مشاوره مستقل املاک ارائه می‌دهم تا با استفاده از داده‌های دقیق، بهترین تصمیم را برای رشد سرمایه بلندمدت خود در بازار دبی بگیرید.",
-                ABOUT_TITLE: "درباره من",
-                ABOUT_P1: "من مشاور شخصی شما در بازار املاک دبی هستم. من به شفافیت کامل و رویکردی در سطح بانکی در انتخاب دارایی اعتقاد دارم.",
-                ABOUT_P2: "هدف من محافظت از منافع شماست تا اطمینان حاصل شود که خرید ملک شما یک حرکت استراتژیک مالی است، نه فقط یک معامله."
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <img src="MRLC.jpeg" alt="Dubai Real Estate Investment Advisor" class="about-photo"
+             loading="eager" width="280" height="280"
+             onerror="this.style.background='var(--card-bg)';this.style.border='3px solid var(--shiraz-rose)';" />
+        <p class="about-title" data-en="Dubai Real Estate Investment Advisor" data-ar="مستشار استثمار عقاري في دبي" data-fa="مشاور سرمایه‌گذاری در املاک دبی">Dubai Real Estate Investment Advisor</p>
+      </div>
+      <div class="about-text">
+        <span class="section-label" data-en="About" data-ar="عنّي" data-fa="درباره من">About</span>
+        <h2 data-en="A Strategist's Discipline.<br>An Investor's Conviction." data-ar="انضباط الاستراتيجي.<br>يقين المستثمر." data-fa="نظم استراتژیک.<br>اعتقاد سرمایه‌گذار.">A Strategist's Discipline.<br>An Investor's Conviction.</h2>
+        <p data-en="A Dubai-based real estate investment advisor and private portfolio manager with 20 years of career experience at one of the MENA region's largest financial institutions."
+           data-ar="مستشار استثمار عقاري ومدير محفظة خاصة مقيم في دبي. يمتلك 20 عاماً من الخبرة المهنية في إحدى أكبر المؤسسات المالية في منطقة الشرق الأوسط وشمال أفريقيا."
+           data-fa="مشاور سرمایه‌گذاری در بازار ملک و مدیر پرتفولیوی خصوصی، مقیم دبی. بیست سال سابقه حرفه‌ای در یکی از بزرگ‌ترین موسسات مالی منطقه خاورمیانه و شمال آفریقا.">
+          A Dubai-based real estate investment advisor and private portfolio manager with 20 years of career experience at one of the MENA region's largest financial institutions.
+        </p>
+        <p data-en="Every strategy is built around one question: what does this specific investor actually need? Not market averages. Not developer projections. A structured, tailor-made approach aligned to your capital, your timeline, and your return expectations — with no agenda beyond getting the answer right."
+           data-ar="كل استراتيجية تبدأ بسؤال واحد: ما الذي يحتاجه هذا المستثمر تحديداً؟ ليس متوسطات السوق، ولا توقعات المطوّرين. بل نهج مُصمَّم خصيصاً لرأس مالك، وجدولك الزمني، وأهداف عائدك — لا غاية له سوى الوصول إلى الإجابة الصحيحة."
+           data-fa="هر استراتژی از یک سوال شروع می‌شود: این سرمایه‌گذار خاص واقعاً به چه نیاز دارد؟ نه میانگین بازار، نه پیش‌بینی سازندگان. یک رویکرد ساختاریافته و سفارشی، متناسب با سرمایه، افق زمانی و انتظارات بازدهی شما — بدون هیچ هدفی جز رسیدن به پاسخ درست.">
+          Every strategy is built around one question: what does this specific investor actually need? Not market averages. Not developer projections. A structured, tailor-made approach aligned to your capital, your timeline, and your return expectations — with no agenda beyond getting the answer right.
+        </p>
+        <p data-en="I also manage a private real estate portfolio across three countries. So when I advise you, I'm not reading from a brochure — I'm in the market myself."
+           data-ar="أدير كذلك محفظة عقارية خاصة في ثلاث دول. فحين أقدّم لك المشورة، لا أقرأ من كتيّب — أنا نفسي مستثمر في هذا السوق."
+           data-fa="همچنین یک پرتفولیوی خصوصی در سه کشور مدیریت می‌کنم. پس وقتی مشاوره می‌دهم، از روی بروشور نمی‌خوانم — خودم در بازار حضور دارم.">
+          I also manage a private real estate portfolio across three countries. So when I advise you, I'm not reading from a brochure — I'm in the market myself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="section-header">
+      <span class="section-label" data-en="The Difference" data-ar="ما الذي يميّزنا" data-fa="تفاوت اصلی">The Difference</span>
+      <h2 data-en="Why Work With Me?" data-ar="لماذا العمل معي؟" data-fa="چرا با من کار کنید؟">Why Work With Me?</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">◈</div>
+        <h3 data-en="Strategic Discipline, Not Sales Pressure" data-ar="انضباط استراتيجي، لا ضغط للبيع" data-fa="انضباط استراتژیک، نه فشار فروش">Strategic Discipline, Not Sales Pressure</h3>
+        <p data-en="Two decades of investment strategy and risk management applied to every opportunity. You get the numbers, not the pitch."
+           data-ar="عقدان من الخبرة في استراتيجية الاستثمار وإدارة المخاطر، مطبّقان على كل فرصة. تحصل على الأرقام، لا على خطاب تسويقي."
+           data-fa="بیست سال تجربه در استراتژی سرمایه‌گذاری و مدیریت ریسک، روی هر فرصتی اعمال می‌شود. شما اعداد واقعی را دریافت می‌کنید، نه یک پیچ فروش.">Two decades of investment strategy and risk management applied to every opportunity. You get the numbers, not the pitch.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">◈</div>
+        <h3 data-en="No Conflicts. No Commission Bias." data-ar="لا تضارب في المصالح. لا تحيّز للعمولة." data-fa="بدون تعارض منافع. بدون سوگیری کمیسیون.">No Conflicts. No Commission Bias.</h3>
+        <p data-en="I tell you when a deal doesn't make sense. That's the honest advisory model — and it's the only one I operate."
+           data-ar="أُخبرك صراحةً حين لا تكون الصفقة مجدية. هذا هو نموذج المشورة الصادقة — والنموذج الوحيد الذي أعمل به."
+           data-fa="وقتی یک معامله منطقی نیست، صادقانه می‌گویم. این مدل مشاوره صادقانه است — و تنها مدلی که بر اساس آن کار می‌کنم.">I tell you when a deal doesn't make sense. That's the honest advisory model — and it's the only one I operate.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">◈</div>
+        <h3 data-en="Private Portfolio Intelligence" data-ar="خبرة المستثمر الفعلي" data-fa="بینش از درون بازار">Private Portfolio Intelligence</h3>
+        <p data-en="I manage property across three countries. Market insight from someone who is also a buyer — not just an advisor."
+           data-ar="أدير عقارات في ثلاث دول. هذه ليست نظرية — بل تجربة شخصية من مستثمر حقيقي في السوق."
+           data-fa="در سه کشور ملک مدیریت می‌کنم. این نظریه نیست — بینشی است از کسی که خودش هم در همین بازار سرمایه‌گذار است.">I manage property across three countries. Market insight from someone who is also a buyer — not just an advisor.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">◈</div>
+        <h3 data-en="Multilingual. Multicultural." data-ar="متعدد اللغات. متعدد الثقافات." data-fa="چندزبانه. چندفرهنگه.">Multilingual. Multicultural.</h3>
+        <p data-en="English, Arabic, Farsi. Dubai's most diverse investor community, served without barriers."
+           data-ar="إنجليزي وعربي وفارسي. نخدم أكثر مجتمعات المستثمرين تنوعاً في دبي، بلا حواجز ولا وسطاء."
+           data-fa="انگلیسی، عربی، فارسی. متنوع‌ترین جامعه سرمایه‌گذاران دبی، بدون هیچ مانع زبانی یا فرهنگی.">English, Arabic, Farsi. Dubai's most diverse investor community, served without barriers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="lead-capture">
+    <div class="lead-inner">
+      <span class="section-label" data-en="Market Intelligence" data-ar="ذكاء السوق" data-fa="هوش بازار">Market Intelligence</span>
+      <h2 data-en="Get the Dubai Market Brief" data-ar="احصل على تقرير سوق دبي" data-fa="گزارش بازار دبی را دریافت کنید">Get the Dubai Market Brief</h2>
+      <p class="subtext"
+         data-en="The market is shifting. Get a clear-eyed view of where Dubai real estate is heading — and where the real opportunities are right now."
+         data-ar="السوق يتحول. احصل على رؤية واضحة حول وجهة عقارات دبي — وأين تكمن الفرص الحقيقية الآن."
+         data-fa="بازار در حال تغییر است. یک دیدگاه شفاف درباره مسیر بازار املاک دبی دریافت کنید — و اکنون فرصت‌های واقعی کجاست.">
+        The market is shifting. Get a clear-eyed view of where Dubai real estate is heading — and where the real opportunities are right now.
+      </p>
+      <form class="lead-form" id="leadForm" action="https://formspree.io/f/xkokazvz" method="POST">
+        <input type="hidden" name="_subject" value="Dubai Market Brief Request" />
+        <input class="form-input" type="text" name="name" placeholder="Your Name" required
+               data-en-placeholder="Your Name" data-ar-placeholder="اسمك" data-fa-placeholder="نام شما" />
+        <input class="form-input" type="email" name="email" placeholder="Email Address" required
+               data-en-placeholder="Email Address" data-ar-placeholder="البريد الإلكتروني" data-fa-placeholder="آدرس ایمیل" />
+        <input class="form-input" type="tel" name="whatsapp" placeholder="+971 — WhatsApp Number"
+               data-en-placeholder="+971 — WhatsApp Number" data-ar-placeholder="+971 — رقم واتساب" data-fa-placeholder="+971 — شماره واتساپ" />
+        <button type="submit" class="btn-form"
+                data-en="Send Me the Brief →" data-ar="أرسل لي التقرير →" data-fa="گزارش را برایم بفرست →">Send Me the Brief →</button>
+      </form>
+      <div class="form-thanks" id="leadThanks">
+        You're in. Expect the brief shortly — and feel free to WhatsApp directly at <strong>+971 58 589 9112</strong>.
+      </div>
+    </div>
+  </section>
+
+  <section id="opportunities">
+    <div class="section-header">
+      <span class="section-label" data-en="Curated Assets" data-ar="أصول مختارة" data-fa="دارایی‌های منتخب">Curated Assets</span>
+      <h2 data-en="Strategic Opportunities" data-ar="فرص استراتيجية" data-fa="فرصت‌های استراتژیک">Strategic Opportunities</h2>
+      <p class="section-sub"
+         data-en="Hand-picked assets for capital preservation and long-term appreciation."
+         data-ar="أصول مختارة بعناية للحفاظ على رأس المال وتنميته على المدى البعيد."
+         data-fa="دارایی‌های انتخاب‌شده برای حفظ سرمایه و رشد بلندمدت.">
+        Hand-picked assets for capital preservation and long-term appreciation.
+      </p>
+    </div>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="opp-location">Dubailand Corridor</div>
+        <h3>Tilal Binghatti</h3>
+        <p data-en="Premium villa assets designed for high-yield residential demand and steady capital growth across a proven corridor."
+           data-ar="أصول فيلا متميزة مصممة للطلب السكني عالي العائد والنمو الرأسمالي الثابت."
+           data-fa="دارایی‌های ویلایی پریمیوم طراحی‌شده برای تقاضای مسکونی با بازده بالا و رشد پایدار سرمایه.">
+          Premium villa assets designed for high-yield residential demand and steady capital growth across a proven corridor.
+        </p>
+        <a href="#contact" class="btn-enquire"
+           data-en="Enquire →" data-ar="استفسر →" data-fa="استعلام →">Enquire →</a>
+      </div>
+      <div class="opp-card">
+        <div class="opp-location">Abu Dhabi</div>
+        <h3>Sobha City</h3>
+        <p data-en="Setting the benchmark for construction quality and finish in the capital's most ambitious new urban development."
+           data-ar="يضع معيار جودة البناء والتشطيبات في أكثر المشاريع الحضرية طموحًا في العاصمة."
+           data-fa="تعیین معیار کیفیت ساخت‌وساز و پرداخت در جاه‌طلبانه‌ترین توسعه شهری جدید پایتخت.">
+          Setting the benchmark for construction quality and finish in the capital's most ambitious new urban development.
+        </p>
+        <a href="#contact" class="btn-enquire"
+           data-en="Enquire →" data-ar="استفسر →" data-fa="استعلام →">Enquire →</a>
+      </div>
+      <div class="opp-card">
+        <div class="opp-location">Ras Al Khaimah</div>
+        <h3>Mondrian Residences</h3>
+        <p data-en="Iconic branded residences at a compelling entry price point with strong long-term appreciation potential in the UAE's fastest-growing emirate."
+           data-ar="إقامات فاخرة ذات علامة تجارية مميزة بسعر دخول مقنع وإمكانية تقدير قوية في أسرع إمارة نمواً."
+           data-fa="اقامتگاه‌های برند معروف با قیمت ورودی جذاب و پتانسیل رشد بلندمدت قوی در سریع‌ترین امارت در حال رشد.">
+          Iconic branded residences at a compelling entry price point with strong long-term appreciation potential in the UAE's fastest-growing emirate.
+        </p>
+        <a href="#contact" class="btn-enquire"
+           data-en="Enquire →" data-ar="استفسر →" data-fa="استعلام →">Enquire →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <span class="section-label" data-en="15 Minutes. No Pitch." data-ar="١٥ دقيقة. بلا ترويج." data-fa="۱۵ دقیقه. بدون تبلیغ.">15 Minutes. No Pitch.</span>
+    <h2 data-en="Book Your Investment Clarity Call" data-ar="احجز مكالمة الوضوح الاستثماري" data-fa="تماس شفاف‌سازی سرمایه‌گذاری را رزرو کنید">Book Your Investment Clarity Call</h2>
+    <p class="subtext"
+       data-en="Tell me your budget, your timeline, and any projects on your radar. I'll give you the honest numbers and a clear framework — whether that leads to a deal or not."
+       data-ar="أخبرني بميزانيتك وجدولك الزمني وأي مشاريع تراها. سأمنحك الأرقام الحقيقية وإطاراً واضحاً — سواء أفضى ذلك إلى صفقة أم لا."
+       data-fa="بودجه، افق زمانی و هر پروژه‌ای که در ذهن دارید را برایم بگویید. اعداد واقعی و یک چارچوب روشن دریافت می‌کنید — چه به معامله برسیم چه نرسیم.">
+      Tell me your budget, your timeline, and any projects on your radar. I'll give you the honest numbers and a clear framework — whether that leads to a deal or not.
+    </p>
+    <a href="https://calendly.com/masoud-rahemi/investment-clarity-call" target="_blank" rel="noopener" class="btn-call-big"
+       data-en="Book Your Free Call →" data-ar="احجز مكالمتك المجانية ←" data-fa="تماس رایگان رزرو کنید ←">Book Your Free Call →</a>
+    <p class="call-note"
+       data-en="Come prepared with: your budget range · investment timeline · specific projects of interest"
+       data-ar="احضر ومعك: نطاق ميزانيتك · الجدول الزمني للاستثمار · المشاريع التي تودّ مناقشتها"
+       data-fa="آماده بیایید: محدوده بودجه · افق سرمایه‌گذاری · پروژه‌های مورد علاقه">
+      Come prepared with: your budget range · investment timeline · specific projects of interest
+    </p>
+  </section>
+
+  <section id="contact">
+    <div class="contact-inner">
+      <span class="section-label" data-en="Private Inquiry" data-ar="استفسار خاص" data-fa="استعلام خصوصی">Private Inquiry</span>
+      <h2 data-en="Let's Talk Numbers" data-ar="لنتحدث عن الأرقام" data-fa="بیایید درباره اعداد حرف بزنیم">Let's Talk Numbers</h2>
+      <p class="subtext"
+         data-en="Enter your investment objectives for a tailored market briefing. All inquiries handled with complete discretion."
+         data-ar="أدخل أهدافك الاستثمارية للحصول على تقرير سوقي مُعدّ خصيصاً لك. جميع الاستفسارات تُعالَج بسرية تامة."
+         data-fa="اهداف سرمایه‌گذاری خود را وارد کنید تا یک گزارش بازار کاملاً سفارشی دریافت کنید. تمام استعلام‌ها با محرمانگی کامل بررسی می‌شوند.">
+        Enter your investment objectives for a tailored market briefing. All inquiries handled with complete discretion.
+      </p>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwzpwyw" method="POST">
+        <input type="hidden" name="_subject" value="Private Inquiry — MR Living Capital" />
+        <div class="form-row">
+          <input class="form-input" type="text" name="full_name" placeholder="Full Name" required
+                 data-en-placeholder="Full Name" data-ar-placeholder="الاسم الكامل" data-fa-placeholder="نام کامل" />
+          <input class="form-input" type="email" name="email" placeholder="Email Address" required
+                 data-en-placeholder="Email Address" data-ar-placeholder="البريد الإلكتروني" data-fa-placeholder="آدرس ایمیل" />
+        </div>
+        <div class="form-row">
+          <input class="form-input" type="tel" name="whatsapp" placeholder="WhatsApp Number" required
+                 data-en-placeholder="WhatsApp Number" data-ar-placeholder="رقم واتساب" data-fa-placeholder="شماره واتساپ" />
+          <input class="form-input" type="number" name="investment_aed" placeholder="Investment Budget (AED)"
+                 data-en-placeholder="Investment Budget (AED)" data-ar-placeholder="الميزانية الاستثمارية (درهم)" data-fa-placeholder="بودجه سرمایه‌گذاری (درهم)" />
+        </div>
+        <select class="form-input" name="budget_tier">
+          <option value="" disabled selected>Budget Tier</option>
+          <option value="below_1.5m">Below 1.5M AED</option>
+          <option value="1.5m_3m">1.5M – 3M AED</option>
+          <option value="3m_5m">3M – 5M AED</option>
+          <option value="5m_10m">5M – 10M AED</option>
+          <option value="10m_plus">10M+ AED</option>
+        </select>
+        <select class="form-input" name="timeline">
+          <option value="" disabled selected>Acquisition Timeline</option>
+          <option value="immediately">Immediately</option>
+          <option value="2_4_weeks">2–4 Weeks</option>
+          <option value="2_months">Within 2 Months</option>
+          <option value="3_6_months">3–6 Months</option>
+          <option value="6_months_plus">6 Months+</option>
+          <option value="research">Market Research Only</option>
+        </select>
+        <select class="form-input" name="primary_interest">
+          <option value="" disabled selected>Primary Interest</option>
+          <option value="offplan">Off-Plan New Launch</option>
+          <option value="ready_secondary">Ready & Secondary Market</option>
+          <option value="both">Both</option>
+          <option value="commercial">Commercial</option>
+          <option value="portfolio">Portfolio Strategy</option>
+        </select>
+        <textarea class="form-input" name="message" rows="4" placeholder="Any additional information I should know?"
+                  data-en-placeholder="Any additional information I should know?"
+                  data-ar-placeholder="هل هناك أي معلومات إضافية يجب أن أعرفها؟"
+                  data-fa-placeholder="آیا اطلاعات اضافی وجود دارد که باید بدانم؟"></textarea>
+        <button type="submit" class="btn-form"
+                data-en="Submit Inquiry →" data-ar="إرسال الاستفسار →" data-fa="ارسال استعلام →">Submit Inquiry →</button>
+        <div class="form-thanks" id="contactThanks">
+          Thank you. Your inquiry has been received and will be treated with complete discretion. Expect a response within 24 hours.
+        </div>
+      </form>
+      <p class="contact-note">All inquiries are treated with complete discretion.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>MR Living Capital</h3>
+        <p>Living Proof. Lasting Legacy.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/mrlivingcapital" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/mrlivingcapital" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://t.me/mrlivingcapital" target="_blank" rel="noopener" class="social-icon" aria-label="Telegram">
+          <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a href="https://wa.me/971585899112" target="_blank" rel="noopener" class="social-icon" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+      <div class="footer-contact">
+        <a href="https://wa.me/971585899112">WhatsApp: +971 58 589 9112</a>
+        <a href="https://t.me/mrlivingcapital">Telegram: @mrlivingcapital</a>
+        <span>mrlivingcapital.com</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 MR Living Capital. All rights reserved. Dubai, UAE.
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var layers = document.querySelectorAll('.bg-layer');
+      var current = 0;
+      function rotateBg() {
+        layers[current].classList.remove('active');
+        current = (current + 1) % layers.length;
+        layers[current].classList.add('active');
+      }
+      setInterval(rotateBg, 8000);
+    })();
+
+    function setLang(lang) {
+      var body = document.body;
+      var btnEn = document.getElementById('btnEn');
+      var btnAr = document.getElementById('btnAr');
+      var btnFa = document.getElementById('btnFa');
+      [btnEn, btnAr, btnFa].forEach(function(b){ if(b) b.classList.remove('active'); });
+      if (lang === 'ar' || lang === 'fa') {
+        body.classList.add('rtl');
+        body.setAttribute('lang', lang);
+        if (lang === 'ar' && btnAr) btnAr.classList.add('active');
+        if (lang === 'fa' && btnFa) btnFa.classList.add('active');
+      } else {
+        body.classList.remove('rtl');
+        body.setAttribute('lang', 'en');
+        if (btnEn) btnEn.classList.add('active');
+      }
+      document.querySelectorAll('[data-en]').forEach(function (el) {
+        var text = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+        if (text) el.innerHTML = text;
+      });
+      document.querySelectorAll('[data-en-placeholder]').forEach(function (el) {
+        var ph = el.getAttribute('data-' + lang + '-placeholder') || el.getAttribute('data-en-placeholder');
+        if (ph) el.setAttribute('placeholder', ph);
+      });
+    }
+
+    (function () {
+      var form = document.getElementById('leadForm');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+          .then(function (res) {
+            if (res.ok) {
+              form.style.display = 'none';
+              document.getElementById('leadThanks').classList.add('visible');
+            } else {
+              alert('Something went wrong. Please WhatsApp directly at +971 58 589 9112.');
             }
-        };
+          }).catch(function () {
+            alert('Connection error. Please WhatsApp directly at +971 58 589 9112.');
+          });
+      });
+    })();
 
-        /* FUNCTION: Handle Language Switching & RTL Logic
-        */
-        function changeLanguage(lang, btnElement) {
-            // Update Body Direction
-            const isRTL = (lang === 'ar' || lang === 'fa');
-            document.body.className = isRTL ? 'rtl' : 'ltr';
-
-            // Update Active Button State
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            btnElement.classList.add('active');
-
-            // Apply Text Changes
-            document.getElementById('TEXT_H1').innerHTML = Dictionary[lang].H1;
-            document.getElementById('TEXT_HS').innerText = Dictionary[lang].HS;
-            document.getElementById('TEXT_ABOUT_TITLE').innerText = Dictionary[lang].ABOUT_TITLE;
-            document.getElementById('TEXT_ABOUT_P1').innerText = Dictionary[lang].ABOUT_P1;
-            document.getElementById('TEXT_ABOUT_P2').innerText = Dictionary[lang].ABOUT_P2;
-        }
-
-        /* FUNCTION: Intersection Observer for Background Image Swapping
-        */
-        const sections = document.querySelectorAll('section');
-        const bgLayers = document.querySelectorAll('.bg-layer');
-
-        const observerOptions = {
-            root: null,
-            threshold: 0.45, // Detect when 45% of the section is visible
-            rootMargin: "0px"
-        };
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.getAttribute('id');
-                    
-                    // Remove active class from all layers
-                    bgLayers.forEach(layer => {
-                        layer.classList.remove('active');
-                    });
-
-                    // Add active class to corresponding background layer
-                    const targetLayer = document.getElementById('bg-' + sectionId);
-                    if (targetLayer) {
-                        targetLayer.classList.add('active');
-                    }
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        /* LOGIC: Ensure Nav clicks smooth scroll 
-        */
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    (function () {
+      var form = document.getElementById('contactForm');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+          .then(function (res) {
+            if (res.ok) {
+              Array.from(form.children).forEach(function (child) {
+                if (child.id !== 'contactThanks') child.style.display = 'none';
+              });
+              var thanks = document.getElementById('contactThanks');
+              thanks.classList.add('visible');
+              thanks.style.display = 'block';
+            } else {
+              alert('Something went wrong. Please WhatsApp directly at +971 58 589 9112.');
+            }
+          }).catch(function () {
+            alert('Connection error. Please WhatsApp directly at +971 58 589 9112.');
+          });
+      });
+    })();
+  </script>
 
 </body>
 </html>
